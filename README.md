@@ -1,2 +1,0 @@
-# AgilProjekt
-Remote group :)
