@@ -1,47 +1,190 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ultimate Quiz Game HomePage</title>
+  </head>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="singleplayer.html">SinglePlayer</a></li>
+          <li><a href="doubleplayer.html">DoublePlayers</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Welcome To The Ultimate Quiz ShowDown!</h1>
+      <p>
+        "Welcome to the ultimate Quiz ShowDown"<br />
+        Are you ready to put your knowledge to the test and embark on a
+        thrilling trivia adventure?<br />
+        Whether you are a lone genius or a dynamic duo, our quiz is your ticket
+        to hours of brain-teasing and laughter-induce fun!<br />
+      </p>
 
-  <main>
-    <TheWelcome />
-  </main>
+      <h3>How To Play</h3>
+      <ol>
+        <li>
+          Solo Mode: Challenge yourself and become the trivia master as you
+          tackle a wide range of mind-boggling questions. Will you claim the
+          title of the Ultimate Quiz Champ?
+        </li>
+        <li>
+          Duel Mode: Grab a friend, family member or even a friendly rival for
+          an epic head-to-head battle of wits! Test your skills, bragging rights
+          are on the line!
+        </li>
+        <li>
+          Explore Diverse Topics: From historical mysteries to mathematical,
+          scientifical, sports and everything in-between. Our quiz cover it all.
+          Choose the topic and buckle-up!
+        </li>
+      </ol>
+      <p>
+        Get ready to flex those brain muscles, have a blast, make lasting
+        memories and become a legend! It's time to start Quizzing!
+      </p>
+      <div class="history-animation">
+        <h3>History</h3>
+        <p>
+          Would have a "zoom-in" animation/transition when we open the website
+          or when we hover.
+        </p>
+        <div class="zoom-in"></div>
+      </div>
+      <div class="geography-animation">
+        <h3>Geography</h3>
+        <p>
+          Would have a "zoom-in" animation/transition when we open the website
+          or when we hover.
+        </p>
+        <div class="zoom-in"></div>
+      </div>
+      <div class="mathematics-animation">
+        <h3>Mathematics</h3>
+        <p>
+          Would have a "zoom-in" animation/transition when we open the website
+          or when we hover.
+        </p>
+        <div class="zoom-in"></div>
+      </div>
+
+      <div>
+        <a href="singleplayer.html">Single Player</a>
+      </div>
+      <div>
+        <a href="doubleplayer.html">Double Players</a>
+      </div>
+      <div class="sweden-animation">
+        <h3>Sweden</h3>
+        <p>
+          Would have a "zoom-in" animation/transition when we open the website
+          or when we hover.
+        </p>
+        <div class="zoom-in"></div>
+      </div>
+      <div class="english-animation">
+        <h3>English</h3>
+        <p>
+          Would have a "zoom-in" animation/transition when we open the website
+          or when we hover.
+        </p>
+        <div class="zoom-in"></div>
+      </div>
+      <div class="science-animation">
+        <h3>Science</h3>
+        <p>
+          Would have a "zoom-in" animation/transition when we open the website
+          or when we hover.
+        </p>
+        <div class="zoom-in"></div>
+      </div>
+    </main>
+    <footer>
+      <div>
+        <ul>
+          <li>A group effort of "The Remote Team"</li>
+        </ul>
+      </div>
+    </footer>
+  </body>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+      * {
+        margin: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+      body {
+        background-color: #e6e5e5;
+        font-family: Arial, Helvetica, sans-serif;
+      }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+      header {
+        background-color: black;
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+      }
+      footer {
+        background-color: black;
+        padding: 10px;
+      }
+      footer li {
+        color: white;
+        list-style: none;
+      }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+      /*how nav renders on the page*/
+      nav a:visited,
+      nav a:link {
+        color: white;
+        text-decoration: none;
+      }
+
+      nav > ul {
+        display: inline;
+        padding: 0;
+      }
+
+      nav > ul > li {
+        display: inline-block;
+        list-style: none;
+        margin: 0 5px 0 5px;
+      }
+      main {
+        display: block;
+        padding-top: 3em;
+        padding-bottom: 3em;
+        min-height: 85%;
+      }
+      .zoom-in {
+        box-sizing: border-box;
+        border-radius: 50%;
+      }
+      .zoom-in {
+        padding: 50px;
+        background-color: rgb(128, 196, 97);
+        transition: transform 0.2s;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+      }
+      .zoom-in:hover {
+        transform: scale(1.5);
+      }
+  </style>
