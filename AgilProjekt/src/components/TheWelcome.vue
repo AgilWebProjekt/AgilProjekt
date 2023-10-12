@@ -19,6 +19,11 @@ Are you ready to put your knowledge to the test and embark on a thrilling trivia
         <img src="..\assets\history.png" alt="Image 2" width="100px">
         <img src="..\assets\history.png" alt="Image 3" width="100px">
         </div>
+
+        <RouterLink to="/login" custom v-slot="{ navigate }">
+        <button @click="navigate" role="link">Login</button>
+        </RouterLink>
+
         <div class="text">text</div>
         <div class="images-right">
         <img src="..\assets\history.png" alt="Image 4" width="100px">
