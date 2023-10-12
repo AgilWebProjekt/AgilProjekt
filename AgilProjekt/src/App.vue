@@ -17,10 +17,10 @@ import { RouterLink, RouterView } from 'vue-router'
       <nav>
         <RouterLink to="/categories">Categories</RouterLink>
       </nav>
-
+      <RouterView />
   </header>
 
-  <RouterView />
+  
 </template>
 
 <style scoped>
