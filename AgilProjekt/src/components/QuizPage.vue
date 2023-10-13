@@ -7,11 +7,11 @@
     <div>
       <div>
         <h3>Question:</h3>
-        <p>What is your name?</p>
-        <label for="1"><input type="radio" name="quiz" id="1" value="1"> Wassim</label>
-        <label for="2"><input type="radio" name="quiz" id="2" value="2"> Saher</label>
-        <label for="3"><input type="radio" name="quiz" id="3" value="3"> Stephen</label>
-        <label for="4"><input type="radio" name="quiz" id="4" value="4"> Venu</label>
+        <p>Which language has the more native speakers?</p>
+        <label for="1"><input type="radio" name="quiz" id="1" value="1"> English</label>
+        <label for="2"><input type="radio" name="quiz" id="2" value="2"> Spanish</label>
+        <label for="3"><input type="radio" name="quiz" id="3" value="3"> Mandarin Chinese</label>
+        <label for="4"><input type="radio" name="quiz" id="4" value="4"> French</label>
       </div>
       <button type="submit" onclick="clickNextButton(1)">Next ❯</button>
     </div>
