@@ -23,8 +23,8 @@
 </div>
 
 <div class="button">
-  <RouterLink to="/login" custom v-slot="{ navigate }">
-    <button @click="navigate" role="link">Login</button>
+  <RouterLink to="/quiz" custom v-slot="{ navigate }">
+    <button @click="navigate" role="link">LET'S GO</button>
   </RouterLink>
 </div>
     
