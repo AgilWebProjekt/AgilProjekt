@@ -2,40 +2,42 @@
 </script>
 
 <template>
-  <div>
- <h1> Welcome to the Ultimate Quiz Showdown!</h1>
- <p>🚀 Welcome to the Ultimate Quiz Showdown! 🌟<br>
-Are you ready to put your knowledge to the test and embark on a thrilling trivia adventure? Whether you're a lone genius or a dynamic duo, our quiz game is your ticket to hours of brain-teasing, laughter-inducing fun!
-<br>🎮 How to Play:
+
+  <div class="info">
+ <h1> Welcome to Quiztastic!</h1>
+ <p>🚀 Welcome to the Ultimate Quiz Showdown! 🌟</p>
+ <p>Are you ready to put your knowledge to the test and embark on a thrilling trivia adventure? Whether you're a lone genius or a dynamic duo, our quiz game is your ticket to hours of brain-teasing, laughter-inducing fun!</p>
+ <p>🎮 How to Play:
 <br>1️⃣ Solo Mode: Challenge yourself and become the trivia master as you tackle a wide range of mind-boggling questions. Will you claim the title of the Ultimate Quiz Champ?
 <br>2️⃣ Duel Mode: Grab a friend, family member, or even a friendly rival for an epic head-to-head battle of wits! Test your skills, bragging rights are on the line!
 <br>🌍 Explore Diverse Topics: From history's mysteries to mathematics, science to sports, and everything in between, our quizzes cover it all. Choose the topic and buckle up!
-<br>Get ready to flex those brain muscles, have a blast, make lasting memories and become a legend! It's time to start quizzing! 🤓✨"
+</p>
+<p>Get ready to flex those brain muscles, have a blast, make lasting memories and become a legend! It's time to start quizzing! 🤓✨"
 </p>
 </div>
-<div class="circle-container">
-      <div class="images-left">
-        <img src="..\assets\history.png" alt="Image 1" width="100px">
-        <img src="..\assets\history.png" alt="Image 2" width="100px">
-        <img src="..\assets\history.png" alt="Image 3" width="100px">
-        </div>
 
-        <RouterLink to="/login" custom v-slot="{ navigate }">
-        <button @click="navigate" role="link">Login</button>
-        </RouterLink>
+<div class="images-top">
+<img title="history" src="..\assets\history.png" alt="history">
+<img title="science" src="..\assets\science.png" alt="science">
+<img title="language" src="..\assets\language.png" alt="language">
+</div>
 
-        <div class="text">text</div>
-        <div class="images-right">
-        <img src="..\assets\history.png" alt="Image 4" width="100px">
-        <img src="..\assets\history.png" alt="Image 5" width="100px">
-        <img src="..\assets\history.png" alt="Image 6" width="100px">
-        </div>
-    </div>
+<div class="button">
+  <RouterLink to="/login" custom v-slot="{ navigate }">
+    <button @click="navigate" role="link">Login</button>
+  </RouterLink>
+</div>
+    
+<div class="images-bottom">
+<img title="maths" src="..\assets\maths.png" alt="mathematics">
+<img title="geography" src="..\assets\geography.png" alt="geography">
+<img title="sweden" src="..\assets\sweden.png" alt="sweden">  
+</div>
 </template>
 
 <style scoped>
-div {
-  padding: 50px;
+.info {
+  padding: 25px 50px;
   margin:0 50px;
 }
 h1{
@@ -43,24 +45,11 @@ h1{
   align-items: center;
   justify-content: center;
 }
-.circle-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 400px;
-}
-.images-left{
-  height: 370px;
-  width: 335px;
-}
 
-.text{
-  height: 370px;
-  width: 335px;
-}
-.images-right{
- height: 370px;
-  width: 335px;
+.button{
+  display: flex;
+  justify-content: space-around;
+
 }
 
 button{
@@ -73,5 +62,74 @@ button{
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+  margin-top: 100px;
+  margin-bottom: 100px;;
+}
+
+img{
+  width: 150px;
+  padding: 10px;
+  margin: 10px;
+}
+
+img:hover {
+  animation: wiggle 0.5s infinite;
+  animation-timing-function: linear;   
+}
+
+@keyframes wiggle {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(5px, 5px) rotate(5deg); }
+  50% { transform: translate(0, 0) rotate(0eg); }
+  75% { transform: translate(-5px, 5px) rotate(-5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.images-top{
+  margin: 0 100px;
+  animation-duration: 3s;
+  animation-delay: 2s;
+  animation-name: slideintop;
+  animation-timing-function: ease-out;
+  display: flex;
+  justify-content: space-around;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideintop{
+  from{
+    margin-left: 100%;
+    width: 200%;
+  }
+
+  to{
+    margin-left: 5%;
+    width: 90%;
+  }
+}
+
+.images-bottom{
+  margin: 0 100px;
+  animation-duration: 3s;
+  animation-delay: 2s;
+  animation-name: slideinbottom;
+  animation-timing-function: ease-out;
+  display: flex;
+  justify-content: space-around;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideinbottom{
+ from{
+    margin-left: -100%;
+    width: 100%;
+  }
+
+  to{
+    margin-left: 5%;
+    width: 90%;
+  }
+
+
 }
 </style>
