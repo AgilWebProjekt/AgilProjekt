@@ -19,12 +19,7 @@
 
  .about-section {
 
-  background-image: url('path/to/your/image.jpg');
-    background-size: cover;
-    background-position: center; 
-    border-radius: 10px;
-
-    text-align: center;
+  text-align: center;
     padding: 20px;
     border-radius: 10px;
     margin: 20px;
