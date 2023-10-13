@@ -6,7 +6,6 @@
 <template>
   <div class="about-section">
     <h1>About Us</h1>
-
     <h2>Just Go</h2>
     <p class="description">
       A squad of four diligent students has crafted a quiz that's as entertaining as it is enlightening. Get ready for a good time with some seriously witty questions!
