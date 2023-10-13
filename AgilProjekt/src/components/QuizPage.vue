@@ -7,7 +7,7 @@
     <div>
       <div>
         <h3>Question:</h3>
-        <p>Which language has the more native speakers?</p>
+        <p>Which language has the most native speakers?</p>
         <label for="1"><input type="radio" name="quiz" id="1" value="1"> English</label>
         <label for="2"><input type="radio" name="quiz" id="2" value="2"> Spanish</label>
         <label for="3"><input type="radio" name="quiz" id="3" value="3"> Mandarin Chinese</label>
