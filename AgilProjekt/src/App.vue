@@ -55,9 +55,6 @@ nav {
   background-color: #e2f3ec;
 
 }
-/*#app, body {
-  background-color: #B7F7DE;
-}*/
 
 
 
