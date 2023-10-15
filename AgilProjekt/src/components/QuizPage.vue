@@ -1,59 +1,170 @@
-<script setup>    
+<script setup>
+import { ref, computed } from 'vue';
+
+const questions = ref([
+  {
+    question: "Which language has the most native speakers?",
+    options: ["English", "Spanish", "Mandarin Chinese", "French"],
+    answer: 2,
+    selected: null
+  },
+  {
+    question: "Which planet is known as the Red Planet?",
+    options: ["Earth", "Mars", "Jupiter", "Saturn"],
+    answer: 1,
+    selected: null
+  }
+]);
+
+const quizCompleted = ref(false)
+const currentQuestionIndex = ref(0);
+const score = computed (() => {
+  let value = 0
+  questions.value.map (q => {
+    if (q.selected == q.answer) {
+      value++
+    }
+  })
+  return value
+})
+
+const currentQuestion = computed(() => questions.value[currentQuestionIndex.value]);
+
+const setAnswer = evt => {
+  questions.value[currentQuestionIndex.value].selected = evt.target.value
+  evt.target.value = null
+}
+
+const nextQuestion = () => {
+  if (currentQuestionIndex.value < questions.value.length - 1) {
+    currentQuestionIndex.value++
+  } else {
+    quizCompleted.value = true
+  }
+};
 </script>
 
 <template>
-  <div class="quiz-container">
-    <h1>Quiz</h1>
-    <h3>Question:</h3>
-    <p>Which language has the most native speakers?</p>
-    <label for="1"><input type="radio" name="quiz" id="1" value="1"> English</label>
-    <label for="2"><input type="radio" name="quiz" id="2" value="2"> Spanish</label>
-    <label for="3"><input type="radio" name="quiz" id="3" value="3"> Mandarin Chinese</label>
-    <label for="4"><input type="radio" name="quiz" id="4" value="4"> French</label>
-    <button type="submit" onclick="clickNextButton(1)">Next ❯</button>
-    <h4>Play again <a href="">here</a></h4>
+<main class="quiz">
+  <div class="quiz-box" v-if="!quizCompleted">
+    <div class="question-box" >
+      <h1>{{ currentQuestion.question }}</h1>
+    </div>
+    
+    <div class="option-box">
+      <label v-for="(option, index) in currentQuestion.options"
+              :key="index"
+              :class="`option ${
+                        currentQuestion.selected == index
+                          ? index == currentQuestion.answer
+                            ? 'correct'
+                            : 'wrong'
+                          : ''
+                        } 
+                        ${
+                          currentQuestion.selected != null &&
+                          index != currentQuestion.selected
+                            ? 'disabled'
+                            : ''
+                        }`">
+        <input type="radio"
+              :name="currentQuestion.index"
+              :value="index"
+            v-model="currentQuestion.selected"
+              :disabled="currentQuestion.selected"
+              @change="setAnswer"
+        >
+        <div>{{ option }}</div>
+      </label>
+    </div>
+  
+    <button @click="nextQuestion">
+      Next
+    </button>
+  
   </div>
+  <div class="score" v-else>
+    <h2>You have finished the quiz!</h2>
+    <p>You scored <span>{{ score }} / {{ questions.length }}</span> questions correct</p>
+  </div>
+</main>
 </template>
 
-<style scoped> 
-h1 {
-  color: #333;
-}
-.quiz-container {
-  padding: 30px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
+<style>
+
+.quiz {
+  display:  flex;
+  flex-direction: column;
   align-items: center;
+  padding: 2rem;
+  height: 100vh
 }
-h3, h4 {
-  color: #555;
+
+.quiz-box {
+  background-color: #FFAB73;
+  padding: 1rem;
+  width:100%;
+  max-width: 640px;
 }
-p {
-  color: #666;
+
+.question-box {
+  margin-bottom: 1rem;
+  padding: 1rem;
 }
-label {
-  display: flex;
-  margin-bottom: 10px;
+
+.option-box {
+  margin-bottom: 1rem;
 }
-input[type="radio"] {
-  margin-right: 10px;
-}
-button {
-  background-color: #4caf50;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+
+.option {
+  padding: 1rem;
+  display: block;
+  background-color: #FFF9B0;
+  margin-bottom: 1.5rem;
+  border-radius: 0.5rem;
   cursor: pointer;
 }
-button:hover {
-  background-color: #45a049;
+
+.option:hover {
+  background-color: #f0ecc9d6;
 }
-a {
-  color: #3498db;
-  text-decoration: none;
+
+.option.correct {
+  background-color: #2cce7d;
 }
-a:hover {
-  text-decoration: underline;
+
+.option.wrong {
+  background-color: #ff5a5f;
 }
+
+.option input {
+  display: none;
+}
+
+button {
+	appearance: none;
+	outline: none;
+	cursor: pointer;
+	padding: 0.5rem 1rem;
+	color: #2d213f;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 1.2rem;
+	border-radius: 0.5rem;
+}
+
+.score {
+  background-color: #FFF9B0;
+  padding: 5rem;
+}
+
+.score p{
+  font-size: 30px;
+}
+
+.score span {
+  background-color:#2cce7d;
+  padding: 2px 5px;
+}
+
 </style>
