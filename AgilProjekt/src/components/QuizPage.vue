@@ -97,36 +97,38 @@ const nextQuestion = () => {
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  height: 100vh
+  margin-top : 2rem;
 }
 
 .quiz-box {
-  background-color: #FFAB73;
-  padding: 1rem;
+  background-color:#656b77dc;
+  padding: 1.5rem;
   width:100%;
-  max-width: 640px;
+  max-width: 600px;
+  border-radius: 0.5rem;
 }
 
 .question-box {
   margin-bottom: 1rem;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .option-box {
-  margin-bottom: 1rem;
+  margin: 1rem 1rem 2rem 1rem;
 }
 
 .option {
   padding: 1rem;
   display: block;
-  background-color: #FFF9B0;
-  margin-bottom: 1.5rem;
+  background-color:rgb(207, 200, 200);
+  margin-bottom: 2rem;
   border-radius: 0.5rem;
   cursor: pointer;
 }
 
 .option:hover {
-  background-color: #f0ecc9d6;
+  background-color: #232D3F;
+  color: white;
 }
 
 .option.correct {
@@ -143,19 +145,22 @@ const nextQuestion = () => {
 
 button {
 	appearance: none;
+  background-color: #005B41;
 	outline: none;
 	cursor: pointer;
 	padding: 0.5rem 1rem;
-	color: #2d213f;
+	color: white;
 	font-weight: 700;
 	text-transform: uppercase;
 	font-size: 1.2rem;
 	border-radius: 0.5rem;
+  margin: 1rem;
 }
 
 .score {
-  background-color: #FFF9B0;
+  background-color: #656b77dc;
   padding: 5rem;
+  border-radius: 0.5rem;
 }
 
 .score p{
