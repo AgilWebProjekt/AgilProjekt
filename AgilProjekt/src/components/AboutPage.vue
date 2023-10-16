@@ -13,7 +13,7 @@
   </div>
 </template>
 
-<style >
+<style scoped>
 
 
  .about-section {
