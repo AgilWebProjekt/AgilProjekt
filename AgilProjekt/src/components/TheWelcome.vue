@@ -42,14 +42,16 @@
 </template>
 
 <style scoped>
-.info {
-  padding: 25px 50px;
-  margin:0 50px;
+p{
+  margin: 10px 80px;
 }
+
 h1{
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 3em;
+  margin: 90px 0;
 }
 
 .button{
@@ -59,7 +61,7 @@ h1{
 }
 
 button{
-  background-color: coral;
+  background-color: #005B41;
   border: none;
   color: white;
   padding: 15px 32px;
