@@ -22,6 +22,7 @@
 }
 
   h1 {
+    color: #0f9d58;
     font-size: 5em;
   }
 
