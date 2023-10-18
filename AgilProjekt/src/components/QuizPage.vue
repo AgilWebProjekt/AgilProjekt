@@ -126,6 +126,7 @@ const nextQuestion = () => {
   margin-bottom: 2rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  font-size: 1.1rem;
 }
 
 .option:hover {
