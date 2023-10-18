@@ -146,7 +146,7 @@ const nextQuestion = () => {
 }
 
 button {
-	appearance: none;
+	border-style: none;
   background-color: #005B41;
 	outline: none;
 	cursor: pointer;

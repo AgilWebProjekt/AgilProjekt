@@ -2,7 +2,7 @@
 </script>
 
 <template>
-<div>
+<div class="banner">
   <div class="images-top">
     <img title="history" src="..\assets\history.png" alt="history">
     <img title="science" src="..\assets\science.png" alt="science">
@@ -16,6 +16,7 @@
     <img title="geography" src="..\assets\geography.png" alt="geography">
     <img title="sweden" src="..\assets\sweden.png" alt="sweden">  
   </div> 
+</div>
   <div class="info">
     <p>🚀 Welcome to the Ultimate Quiz Showdown! 🌟</p>
     <p>Are you ready to put your knowledge to the test and embark on a 
@@ -42,7 +43,7 @@
   </div>
 
 
-</div>
+
 </template>
 
 <style scoped>
@@ -76,6 +77,7 @@ button{
   font-weight: bold;
   cursor: pointer;
   margin: 30px;
+  border-radius: 20px;
 }
 
 img{
