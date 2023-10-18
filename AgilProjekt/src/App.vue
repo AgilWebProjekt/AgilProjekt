@@ -40,6 +40,7 @@ header {
 
 nav:hover {
     transform: rotate(5deg);
+    transition: all 0.3s ease-out;
 }
 
 nav {
