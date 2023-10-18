@@ -101,16 +101,18 @@ const nextQuestion = () => {
 }
 
 .quiz-box {
-  background-color:#656b77dc;
-  padding: 1.5rem;
+  background-color:#008170;
+  padding: 1.8rem 3rem;
   width:100%;
-  max-width: 600px;
+  max-width: 500px;
   border-radius: 0.5rem;
+  
 }
 
 .question-box {
   margin-bottom: 1rem;
   padding: 1.5rem;
+  color: white;
 }
 
 .option-box {
@@ -155,12 +157,14 @@ button {
 	font-size: 1.2rem;
 	border-radius: 0.5rem;
   margin: 1rem;
+  margin-bottom: 2rem
 }
 
 .score {
-  background-color: #656b77dc;
+  background-color: #008170;
   padding: 5rem;
   border-radius: 0.5rem;
+  color: white;
 }
 
 .score p{
@@ -170,6 +174,7 @@ button {
 .score span {
   background-color:#2cce7d;
   padding: 2px 5px;
+  color: black;
 }
 
 </style>
