@@ -7,7 +7,7 @@
   <div class="about-section">
   <div class="top">
     <h1>About Us</h1>
-    <img src="../assets/team-programmers-working-software-flat-illustration_74855-18772.jpg">
+    <img src="../assets/Untitled.jpg">
     </div>
     <h2>Welcome to Quiztastic</h2>
     <p class="description">
@@ -49,7 +49,6 @@
   img{
     width: 40em;
     height: auto;
-    border-radius: 3rem;
   }
 
   h2 {
