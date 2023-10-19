@@ -18,9 +18,9 @@ import { RouterLink, RouterView } from 'vue-router'
       <RouterLink to="/categories">Categories</RouterLink>
       </nav>
     </header>
-    <div class="homeview">
+    
       <RouterView />
-    </div>
+    
 
   
 </template>
@@ -56,14 +56,6 @@ a{
   color: white;
   font-family: math; 
 }
-
-/*.homeview {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #e2f3ec;
-
-}*/
-
-
 
 
 </style>
