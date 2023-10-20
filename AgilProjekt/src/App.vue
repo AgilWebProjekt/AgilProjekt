@@ -54,8 +54,8 @@ header {
 nav {
   display: flex;
   align-items: center;
-  font-size: 2.2rem;
-  margin-bottom: 50px;
+  font-size: 1.5rem;
+  
 }
 
 a,
