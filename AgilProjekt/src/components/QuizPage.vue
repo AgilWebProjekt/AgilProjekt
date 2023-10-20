@@ -1,47 +1,79 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+    return `${formattedMinutes}:${formattedSeconds}`;
+  };
+
 
 const questions = ref([
   {
-    question: "Which language has the most native speakers?",
-    options: ["English", "Spanish", "Mandarin Chinese", "French"],
+    question: 'Which language has the most native speakers?',
+    options: ['English', 'Spanish', 'Mandarin Chinese', 'French'],
     answer: 2,
-    selected: null
+    selected: null,
   },
   {
-    question: "Which planet is known as the Red Planet?",
-    options: ["Earth", "Mars", "Jupiter", "Saturn"],
+    question: 'Which planet is known as the Red Planet?',
+    options: ['Earth', 'Mars', 'Jupiter', 'Saturn'],
     answer: 1,
-    selected: null
-  }
+    selected: null,
+  },
 ]);
 
-const quizCompleted = ref(false)
+const quizCompleted = ref(false);
 const currentQuestionIndex = ref(0);
-const score = computed (() => {
-  let value = 0
-  questions.value.map (q => {
-    if (q.selected == q.answer) {
-      value++
+const timer = ref(30);
+
+const score = computed(() => {
+  let value = 0;
+  questions.value.forEach((q) => {
+    if (q.selected === q.answer) {
+      value++;
     }
-  })
-  return value
-})
+  });
+  return value;
+});
 
 const currentQuestion = computed(() => questions.value[currentQuestionIndex.value]);
 
-const setAnswer = evt => {
-  questions.value[currentQuestionIndex.value].selected = evt.target.value
-  evt.target.value = null
-}
+const setAnswer = (evt) => {
+  questions.value[currentQuestionIndex.value].selected = evt.target.value;
+};
 
 const nextQuestion = () => {
   if (currentQuestionIndex.value < questions.value.length - 1) {
-    currentQuestionIndex.value++
+    currentQuestionIndex.value++;
+    resetTimer();
   } else {
-    quizCompleted.value = true
+    quizCompleted.value = true;
   }
 };
+
+const resetTimer = () => {
+  timer.value = 30;
+};
+
+const countdown = () => {
+  const interval = setInterval(() => {
+    if (timer.value > 0) {
+      timer.value--;
+    } else {
+      nextQuestion();
+    }
+  }, 1000);
+
+  onUnmounted(() => {
+    clearInterval(interval);
+  });
+};
+
+onMounted(() => {
+  countdown();
+});
 </script>
 
 <template>
@@ -77,11 +109,8 @@ const nextQuestion = () => {
         <div>{{ option }}</div>
       </label>
     </div>
-  
-    <button @click="nextQuestion">
-      Next
-    </button>
-  
+    <button @click="nextQuestion">Next</button>
+    <input type="text" readonly class="timer" id="timer" :value="formatTime(timer)">
   </div>
   <div class="score" v-else>
     <h2>You have finished the quiz!</h2>
@@ -91,6 +120,12 @@ const nextQuestion = () => {
 </template>
 
 <style>
+.timer{
+  background: #008170;
+  border: none ;
+  color: white;
+  font-size: 1rem;
+}
 
 .quiz {
   display:  flex;
