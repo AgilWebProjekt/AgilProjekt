@@ -17,18 +17,18 @@ window.addEventListener('click', (event) => {
 
 <template>
   <header>
-    <nav>
+    <nav class="navbar">
       <RouterLink to="/">Home</RouterLink>
     </nav>
-    <nav>
+    <nav class="navbar">
       <RouterLink to="/about">About Us</RouterLink>
     </nav>
     <img alt="game logo" class="logo" src="@/assets/Quiztastic.png" width="150" height="150" />
-    <nav>
+    <nav class="navbar">
       <RouterLink to="/login">Login</RouterLink>
     </nav>
     <div class="category-dropdown" @click="toggleDropdown">
-      <nav>
+      <nav class="navbar">
         <span class="category-link">Categories</span>
       </nav>
       <div v-if="showDropdown" class="dropdown-content">
