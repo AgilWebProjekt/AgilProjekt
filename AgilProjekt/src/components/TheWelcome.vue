@@ -81,7 +81,7 @@ button{
 }
 
 img{
-  width: 150px;
+  width: 120px;
   padding: 10px;
   margin: 10px;
 }
