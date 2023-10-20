@@ -6,21 +6,22 @@
 <template>
   <div class="about-section">
   <div class="top">
-    <h1>About Us</h1>
-    <img src="../assets/Untitled.jpg">
-    </div>
+  <div class="top-left">
+    <h1>About Us</h1> 
     <h2>Welcome to Quiztastic</h2>
-    <p class="description">
+    <p>
       We are a passionate team of four dedicated individuals who share a common goal: to make learning engaging, fun, and accessible to everyone. 
       As students ourselves, we understand the challenges and joys of the educational journey, which inspired us to create this innovative quiz app 
-      for our school project.    </p>
+      for our school project.    </p></div>
+      <div class="top-right"><img src="../assets/Untitled.jpg"></div></div>
+      <div class="team">
       <h3>Meet Our Team</h3>
-      <ul class="team">
+      <ul>
       <li>Stephen Osedumme</li>
       <li>Saher Ismail</li>
       <li>Venu Modi</li>
       <li>Wassim Tajeddin</li>
-      </ul>
+      </ul></div>
     
   </div>
 </template>
@@ -40,6 +41,14 @@
   justify-content: space-evenly;
     align-items: center;
     padding: 4rem;
+    margin: 0 10em;
+}
+
+.top-left{
+  display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 2em;
 }
   h1 {
     color: #0f9d58;
@@ -54,6 +63,8 @@
   h2 {
     color: #0f9d58;
     font-size: 3em;
+    text-align: left;
+    margin: 10px 0;
   }
 
   h3{
@@ -61,15 +72,14 @@
     font-size: 2em;
   }
 
-  .description {
+  p {
     font-size: 1.2em;
     color: white;
-    margin: 20px 40px 100px 40px;
-    padding: 0 100px;
+    margin: 0;
   
   }
 
-  .team{
+  .team ul{
     list-style: none;
     padding-left: 0;
     color: white;
