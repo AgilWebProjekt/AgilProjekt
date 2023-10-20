@@ -55,6 +55,7 @@ nav {
   display: flex;
   align-items: center;
   font-size: 2.2rem;
+  margin-bottom: 50px;
 }
 
 a,
@@ -68,6 +69,12 @@ a,
   position: relative;
   display: inline-block;
 }
+
+img{
+  width: 80px;
+  height: 80px;
+}
+
 
 .dropdown-content {
   display: flex;
