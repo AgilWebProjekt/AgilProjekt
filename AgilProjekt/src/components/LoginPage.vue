@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import axios from "axios"
 
 
 // Data
@@ -7,9 +8,17 @@ const name = ref('');
 const email = ref('');
 const password = ref('');
 
-const logIn = function() {
-  console.log("logedIn")
+const logIn = async function(){
+	let result = await axios.post("http://localhost:3000/user", {
+		email:email.value,
+		password:password.value,
+		name:name.value
+	});
+	console.warn(result);
+  if(result.status==201) {
+    alert("log-in done");
   }
+}
 </script>
 <template>
   <h1>Login Page</h1>
@@ -50,5 +59,8 @@ h1 {
   cursor: pointer;
 }
 </style>
+
+  
+
 
 

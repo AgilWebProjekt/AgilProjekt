@@ -5,6 +5,24 @@
       "email": "mike@test",
       "password": "Mi123@",
       "id": 1
+    },
+    {
+      "name": "mike",
+      "email": "mike@test",
+      "password": "Mi123@",
+      "id": 2
+    },
+    {
+      "email": "tony@test",
+      "password": "To1234@",
+      "name": "Tony",
+      "id": 3
+    },
+    {
+      "email": "tony@test",
+      "password": "To1234@",
+      "name": "Tony",
+      "id": 4
     }
   ]
 }
