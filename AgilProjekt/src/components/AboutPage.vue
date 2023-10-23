@@ -53,6 +53,8 @@
   h1 {
     color: #0f9d58;
     font-size: 5em;
+    margin-top: 40px;
+    margin-bottom: 20px;
   }
 
   img{
