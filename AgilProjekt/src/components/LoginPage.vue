@@ -1,13 +1,23 @@
 <script setup>
-</script>
+import { ref } from 'vue';
 
+
+// Data
+const name = ref('');
+const email = ref('');
+const password = ref('');
+
+const logIn = function() {
+  console.log("logedIn")
+  }
+</script>
 <template>
   <h1>Login Page</h1>
   <div class="register">
-    <input type="text" placeholder="Enter Name">
-    <input type="text" placeholder="Enter Email">
-    <input type="password" placeholder="Enter Password">
-    <button>Log In</button>
+    <input type="text" v-model="name" placeholder="Enter Name">
+    <input type="text" v-model="email" placeholder="Enter Email">
+    <input type="password" v-model="password" placeholder="Enter Password">
+    <button v-on:click="logIn">Log In</button>
   </div>
 </template>
 
