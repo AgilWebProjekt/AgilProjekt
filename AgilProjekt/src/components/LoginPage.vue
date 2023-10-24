@@ -16,8 +16,8 @@ const logIn = async function(){
 	});
 	console.warn(result);
   if(result.status==201) {
-    alert("log-in done");
     localStorage.setItem("user-info",JSON.stringify(result.data))
+    this.$router.push({name:'Home'})
   }
 }
 </script>
@@ -60,6 +60,30 @@ h1 {
   cursor: pointer;
 }
 </style>
+
+export default {
+  name :'LoginPage',
+  data() {
+    return {
+      name:'',
+      email:'',
+      password:''
+    }
+  },
+  methods: {
+    async logIn(){
+      let result = await axios.post("http://localhost:3000/user", {
+        email:this.email,
+        password:this.password,
+        name:this.name
+      });
+      console.log(result);
+      if(result.status ==201) {
+        console.log(")
+        }
+      }
+    }
+  }
 
   
 
