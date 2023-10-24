@@ -23,6 +23,12 @@
       "password": "To1234@",
       "name": "Tony",
       "id": 4
+    },
+    {
+      "email": "kelvin@test",
+      "password": "K1234@",
+      "name": "Kelvin",
+      "id": 5
     }
   ]
 }
