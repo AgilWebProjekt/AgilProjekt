@@ -101,6 +101,12 @@
       "password": "",
       "name": "",
       "id": 17
+    },
+    {
+      "email": "bruce@test.com",
+      "password": "Br1234@",
+      "name": "Bruce",
+      "id": 18
     }
   ]
 }
