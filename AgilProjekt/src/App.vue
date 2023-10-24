@@ -1,60 +1,71 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { onMounted } from 'vue'
+function fetchTest() {
+  fetch('http://localhost:3000/').then(response => response.json()).then(data => {
+    console.log('test', data)
+  })
+    .catch(error => console.error(error))
+}
+onMounted(() => {
+  fetchTest()
+})
 </script>
 
 <template>
-    <header>
+  <header>
     <nav>
       <RouterLink to="/">Home</RouterLink>
     </nav>
     <nav>
       <RouterLink to="/about">About Us</RouterLink>
     </nav>
-      <img alt="game logo" class="logo" src="@/assets/Quiztastic.png" width="150" height="150" />
-      <nav>
+    <img alt="game logo" class="logo" src="@/assets/Quiztastic.png" width="150" height="150" />
+    <nav>
       <RouterLink to="/login">Login</RouterLink>
     </nav>
-      <nav>
+    <nav>
       <RouterLink to="/categories">Categories</RouterLink>
-      </nav>
-    </header>
-    <div class="homeview">
-      <RouterView />
-    </div>
-
-  
+    </nav>
+  </header>
+  <button @click="fetchTest">
+    fetch
+  </button>
+  <div class="homeview">
+    <RouterView />
+  </div>
 </template>
 
 <style scoped>
-
 header {
 
-  background-color:#005B41;
+  background-color: #005B41;
   padding: 20px 200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-    
+
 }
 
 nav:hover {
-    transform: rotate(5deg);
+  transform: rotate(5deg);
 }
 
 nav {
-    display: block;
-    padding: 1rem;
-    font-size: 2.2rem;
+  display: block;
+  padding: 1rem;
+  font-size: 2.2rem;
 }
+
 a:hover {
   color: black;
 }
 
-a{
+a {
   text-decoration: none;
   color: white;
-  font-family: math; 
+  font-family: math;
 }
 
 /*.homeview {
@@ -62,8 +73,4 @@ a{
   background-color: #e2f3ec;
 
 }*/
-
-
-
-
 </style>

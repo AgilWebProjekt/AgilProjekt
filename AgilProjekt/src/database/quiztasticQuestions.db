@@ -1,0 +1,71 @@
+CREATE TABLE mathematics (
+    mathId INTEGER PRIMARY KEY,
+    mathQuestion TEXT,
+    mathOption1 TEXT,
+    mathOption2 TEXT,
+    mathOption3 TEXT,
+    mathOption4 TEXT,
+    mathAnswer TEXT,
+    mathHints TEXT  
+);
+
+CREATE TABLE science (
+    scienceId INTEGER PRIMARY KEY,
+    scienceQuestion TEXT,
+    scienceOption1 TEXT,
+    scienceOption2 TEXT,
+    scienceOption3 TEXT,
+    scienceOption4 TEXT,
+    scienceAnswer TEXT,
+    scienceHints TEXT  
+);
+
+CREATE TABLE history (
+    historyId INTEGER PRIMARY KEY,
+    historyQuestion TEXT,
+    historyOption1 TEXT,
+    historyOption2 TEXT,
+    historyOption3 TEXT,
+    historyOption4 TEXT,
+    historyAnswer TEXT
+    historyHints TEXT  
+);
+
+CREATE TABLE geograpy (
+    geograpyId INTEGER PRIMARY KEY,
+    geograpyQuestion TEXT,
+    geograpyOption1 TEXT,
+    geograpyOption2 TEXT,
+    geograpyOption3 TEXT,
+    geograpyOption4 TEXT,
+    geograpyAnswer TEXT
+    geograpyHints TEXT  
+);
+
+CREATE TABLE language (
+    languageId INTEGER PRIMARY KEY,
+    languageQuestion TEXT,
+    languageOption1 TEXT,
+    languageOption2 TEXT,
+    languageOption3 TEXT,
+    languageOption4 TEXT,
+    languageAnswer TEXT,
+    languageHints TEXT  
+);
+
+CREATE TABLE sweden (
+    swedenId INTEGER PRIMARY KEY,
+    swedenQuestion TEXT,
+    swedenOption1 TEXT,
+    swedenOption2 TEXT,
+    swedenOption3 TEXT,
+    swedenOption4 TEXT,
+    swedenAnswer TEXT,
+    swedenHints TEXT  
+);
+
+
+INSERT INTO mathematics (mathId, mathQuestion, mathOption1, mathOption2, mathOption3, mathOption4, mathAnswer, mathHints) VALUES
+
+
+

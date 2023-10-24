@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "backend": "node BackendServer/app.js",
+    "frontend": "vite",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
@@ -11,7 +13,10 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
     "pinia": "^2.1.6",
+    "sqlite3": "^5.1.6",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },
