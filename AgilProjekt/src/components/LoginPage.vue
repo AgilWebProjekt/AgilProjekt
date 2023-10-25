@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { useRouter /*useRoute*/ } from 'vue-router'
 import axios from "axios"
 
 
@@ -8,7 +9,11 @@ const name = ref('');
 const email = ref('');
 const password = ref('');
 
-const logIn = async function(){
+const router = useRouter()
+/*const route = useRoute()*/
+
+
+const logIn = async ()=> {
 	let result = await axios.post("http://localhost:3000/user", {
 		email:email.value,
 		password:password.value,
@@ -17,8 +22,17 @@ const logIn = async function(){
 	console.warn(result);
   if(result.status==201) {
     localStorage.setItem("user-info",JSON.stringify(result.data))
-    this.$router.push({name:'Home'})
+    router.push({name:'quiz'})
   }
+
+  onMounted(() => {
+	let user =localStorage.getItem('user-info')
+	if(user) {
+		router.push({name:'home'})
+	}
+})
+return {name, email, password}
+
 }
 </script>
 <template>
@@ -61,29 +75,6 @@ h1 {
 }
 </style>
 
-export default {
-  name :'LoginPage',
-  data() {
-    return {
-      name:'',
-      email:'',
-      password:''
-    }
-  },
-  methods: {
-    async logIn(){
-      let result = await axios.post("http://localhost:3000/user", {
-        email:this.email,
-        password:this.password,
-        name:this.name
-      });
-      console.log(result);
-      if(result.status ==201) {
-        console.log(")
-        }
-      }
-    }
-  }
 
   
 
