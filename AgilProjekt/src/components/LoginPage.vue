@@ -1,7 +1,6 @@
-<script setup>
-import { ref, onMounted } from 'vue';
-import { useRouter /*useRoute*/ } from 'vue-router'
-import axios from "axios"
+/*import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router'
+import * as axios from "axios"
 
 
 // Data
@@ -10,7 +9,7 @@ const email = ref('');
 const password = ref('');
 
 const router = useRouter()
-/*const route = useRoute()*/
+//const route = useRoute()
 
 
 const logIn = async ()=> {
@@ -33,8 +32,52 @@ const logIn = async ()=> {
 })
 return {name, email, password}
 
+}*/
+
+<script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import axios from 'axios'
+  
+// Reactive data
+const name = ref('')
+const email = ref('')
+const password = ref('')
+
+const router = useRouter()
+
+// Methods
+const logIn = async () => {
+  try {
+    let result = await axios.post("https://localhost:3000/user", {
+      email: email.value,
+      password: password.value,
+      name: name.value
+    })
+
+    if (result.status === 201) {
+      localStorage.setItem("user-info", JSON.stringify(result.data))
+      router.push({ name: 'quiz' })
+    } else {
+      // You can display some error message to the user here
+    }
+  } catch (error) {
+    console.error("Error during login:", error)
+    // Handle error, maybe show user a message
+  }
 }
+
+// Mounted lifecycle method
+/*onMounted(() => {
+  let user = localStorage.getItem('user-info')
+  if (user) {
+    router.push({ name: 'home' })
+  }
+})*/
 </script>
+
+
+
 <template>
   <h1>Login Page</h1>
   <div class="register">
