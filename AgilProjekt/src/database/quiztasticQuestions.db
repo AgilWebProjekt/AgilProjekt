@@ -1,56 +1,71 @@
-CREATE TABLE categories{
-    id INTEGER PRIMARY KEY,
-    name TEXT
-};
+CREATE TABLE mathematics (
+    mathId INTEGER PRIMARY KEY,
+    mathQuestion TEXT,
+    mathOption1 TEXT,
+    mathOption2 TEXT,
+    mathOption3 TEXT,
+    mathOption4 TEXT,
+    mathAnswer TEXT,
+    mathHints TEXT  
+);
 
-create table QUESTIONS{
-    id INTEGER PRIMARY KEY,
-    category_id INTEGER,
-    question TEXT,
-    correct_answer TEXT,
-    answers TEXT,
-    hints TEXT
-    bookmark INTEGER
-    FOREGIN KEY (category_id) REFERENCES categories(id),
-};
+CREATE TABLE science (
+    scienceId INTEGER PRIMARY KEY,
+    scienceQuestion TEXT,
+    scienceOption1 TEXT,
+    scienceOption2 TEXT,
+    scienceOption3 TEXT,
+    scienceOption4 TEXT,
+    scienceAnswer TEXT,
+    scienceHints TEXT  
+);
 
-INSERT INTO categories (name) VALUES ('Mathematics');
-INSERT INTO categories (name) VALUES ('Science');
-INSERT INTO categories (name) VALUES ('History');
-INSERT INTO categories (name) VALUES ('Geograpy');
-INSERT INTO categories (name) VALUES ('Language');
-INSERT INTO categories (name) VALUES ('Sweden');
+CREATE TABLE history (
+    historyId INTEGER PRIMARY KEY,
+    historyQuestion TEXT,
+    historyOption1 TEXT,
+    historyOption2 TEXT,
+    historyOption3 TEXT,
+    historyOption4 TEXT,
+    historyAnswer TEXT
+    historyHints TEXT  
+);
 
-INSERT INTO questions (category_id, question, correct_answer, answers, hints, bookmark) VALUES
-('1', 'What is the value of π (pi) to two decimal places?', '3.14', '3.14, 3.16, 3.18, 3.20'),
-('1', 'What is the highest common factor of the numbers 30 and 132?', '6', '2, 12, 6, 3'),
-('1', 'If 1=3, 2=3, 3=5, 4=4, and 5=4, what is 6=?', '3', '6, 5, 4, 3'),
-('1', 'Using only the process of addition, how to add eight 8’s to get the final number of 1000?', '888+88+8+8+8', '888 + 88 + 8 + 8 + 8,  888 + 88 + 88 + 8 + 8, 888 + 88 + 8 + 8 + 8 + 8, 888 + 8 + 8 + 88 + 8 + 8'),
-('1', 'At a Christmas party, everyone shook hands with everyone else. There were a total of 66 handshakes that happened during the party. How many people were present? ', '12', '6, 11, 12, 10'),
-('2', 'What is the name of the tallest grass on earth?', 'Bamboo', 'Sugarcane, Bamboo, Wheatgrass, Pampas Grass'),
-('2', 'What does DNA stand for?', 'Deoxyribonucleic acid', 'Deoxyribonucleic Acid, Digital Nucleotide Assembly, Double-Stranded Nucleotide, Diethylaminoethyl Nucleotide'),
-('2', 'Which oath of ethics taken by doctors is named after an Ancient Greek physician?', 'Hippocratic Oath', 'Socratic Oath, Pythagorean Oath, Hippocratic Oath, Galenic Oath'),
-('2', 'Humans and chimpanzees share roughly how much DNA?', '98%', '89%, 98%, 76%, 52%'),
-('2', 'At what temperature are Celsius and Fahrenheit equal?', '-40', '-40, 0, 100, 212'),
-('3', 'Who is credited with inventing the telephone?', 'Alexander Graham Bell', 'Thomas Edison, Nikola Tesla, Alexander Graham Bell, Samuel Morse'),
-('3', 'In what year did the Berlin Wall fall?', '1989', '1979, 1988, 1899, 1989'),
-('3', 'Who is said to be so beautiful that her face launched a thousand ships?', 'Helen of Troy', 'Helen of Troy, Cleopatra, Joan of Arc, Queen Nefertiti'),
-('3', 'Which 3 countries made up the Triple Entente in World War I?', 'UK / France / Russia', 'France / Germany / Russia, UK / France / Russia, UK / Italy / US, Germany / Austria-Hungary / Ottoman Empire'),
-('3', 'Which President of the United States abolished slavery?', 'Abraham Lincoln', 'Thomas Jefferson, George Washington, Franklin D. Roosevelt, Abraham Lincoln'),
-('4', 'What present-day Italian city does Mt. Vesuvius overlook?', 'Naples', 'Rome, Naples, Florence, Milan'),
-('4', 'Which country is the newest in the world to be recognised by the UN?', 'South Sudan', 'South Sudan, East Timor (Timor-Leste), Kosovo, Montenegro'),
-('4', 'How many states are there in Australia?', '6', '5, 9, 12, 6'),
-('4', 'What is the highest peak in Africa?', 'Mount Kilimanjaro', 'Mount Kilimanjaro, Mount Kenya, Table Mountain, Mount Elgon'),
-('4', 'How many large islands make up Hawaii?', '8', '9, 15, 4, 8'),
-('5', 'According to dictionary entries, which language has the largest number of words (more than 200,000 words)?', 'English', 'Chinese, English, Spanish, German'),
-('5', 'Which of the following languages has no alphabet?', 'Chinese', 'Korean, Japanese, Chinese, Arabic'),
-('5', 'Approximately how many languages are currently spoken in the world today?', 'Around 7,000', 'Around 1,000, Around 7,000, Around 30,000, Around 5,000'),
-('5', 'What does the word “polyglot” mean?', 'A person who can speak multiple languages', 'A language with more than 1 billion speakers, A country with more than three official languages, A person who can speak multiple languages, A person who can speak 3 languages'),
-('5', 'Which alphabetic system of phonetic notation is widely used around the world as a standardised representation of speech sounds in written form?', 'IPA', 'NBA, IPA, NSA, ASCII'),
-('6', 'What is the national animal of Sweden?', 'Moose', 'Moose, Deer, Fox, Bear'),
-('6', 'How many world heritage sites are there in Sweden?', '15', '10, 15, 20, 17'),
-('6', 'Which is the highest mountain in Sweden?', 'Kebnekaise', 'Kebnekaise, Sarektjåkkå, Storberget, Vikingaberget'),
-('6', 'How many lakes are there in Sweden? (circa)', '100 000', '5000, 15 000, 70 000, 100 000'),
-('6', 'Which is the southernmost point in Sweden?', 'Smygehuk', 'Smygehuk, Treriksröset, Sandhammaren, Southern bridge of Ystad'),
+CREATE TABLE geography (
+    geographyId INTEGER PRIMARY KEY,
+    geographyQuestion TEXT,
+    geographyOption1 TEXT,
+    geographyOption2 TEXT,
+    geographyOption3 TEXT,
+    geographyOption4 TEXT,
+    geographyAnswer TEXT
+    geographyHints TEXT  
+);
+
+CREATE TABLE language (
+    languageId INTEGER PRIMARY KEY,
+    languageQuestion TEXT,
+    languageOption1 TEXT,
+    languageOption2 TEXT,
+    languageOption3 TEXT,
+    languageOption4 TEXT,
+    languageAnswer TEXT,
+    languageHints TEXT  
+);
+
+CREATE TABLE sweden (
+    swedenId INTEGER PRIMARY KEY,
+    swedenQuestion TEXT,
+    swedenOption1 TEXT,
+    swedenOption2 TEXT,
+    swedenOption3 TEXT,
+    swedenOption4 TEXT,
+    swedenAnswer TEXT,
+    swedenHints TEXT  
+);
+
+
+INSERT INTO mathematics (mathId, mathQuestion, mathOption1, mathOption2, mathOption3, mathOption4, mathAnswer, mathHints) VALUES
+
 
 
