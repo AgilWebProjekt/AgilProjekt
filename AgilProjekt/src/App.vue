@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { ref } from 'vue'
 
+
 const showDropdown = ref(false)
 
 const toggleDropdown = () => {
@@ -14,7 +15,6 @@ window.addEventListener('click', (event) => {
   }
 })
 </script>
-
 <template>
   <header>
     <nav>
@@ -39,6 +39,14 @@ window.addEventListener('click', (event) => {
     </div>
   </header>
   <RouterView />
+
+  <footer class="page-footer">
+    <p>
+      &copy;
+      <span class="footer-logo">Quiztastic</span>
+      built by Team Remote
+    </p>
+  </footer>
 </template>
 
 <style scoped>
@@ -55,7 +63,7 @@ nav {
   display: flex;
   align-items: center;
   font-size: 1.5rem;
-  
+
 }
 
 a,
@@ -70,7 +78,7 @@ a,
   display: inline-block;
 }
 
-img{
+img {
   width: 80px;
   height: 80px;
 }
@@ -113,5 +121,14 @@ a::after,
 a:hover::after,
 .category-link:hover::after {
   width: 100%;
+}
+
+.page-footer {
+  height: 4rem;
+  background: black;
+  color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
