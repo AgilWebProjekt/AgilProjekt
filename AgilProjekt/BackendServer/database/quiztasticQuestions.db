@@ -115,7 +115,7 @@ INSERT INTO history (historyId, historyQuestion, historyOption1, historyOption2,
 (14, 'Which ancient Greek philosopher is considered the teacher of Alexander the Great?', 'Socrates', 'Plato', 'Aristotle', 'Pythagoras', 'Aristotle', ''),
 (15, 'Which famous scientist developed the theory of general relativity?', 'Isaac Newton', 'Albert Einstein', 'Stephen Hawking', 'Galileo Galilei', 'Albert Einstein', '')
 
-
+INSERT INTO geography (geographyId, geographyQuestion, geographyOption1, geographyOption2, geographyOption3, geographyOption4, geographyAnswer, geographyHints) VALUES
 (1, 'What present-day Italian city does Mt. Vesuvius overlook?','Rome', 'Naples', 'Florence', 'Milan','Naples','It means new city'),
 (2, 'Which country is the newest in the world to be recognised by the UN?','South Sudan', 'East Timor (Timor-Leste)', 'Kosovo', 'Montenegro','South Sudan','It's neither the East, the West, nor the North'),
 (3, 'How many states are there in Australia?','5', '9', '12', '6', '6','It is a perfect number'),
