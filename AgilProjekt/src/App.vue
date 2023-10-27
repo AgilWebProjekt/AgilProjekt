@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import { ref } from 'vue'
+import FooterComponent from './components/FooterComponent.vue';
 
 
 const showDropdown = ref(false)
@@ -40,13 +41,7 @@ window.addEventListener('click', (event) => {
   </header>
   <RouterView />
 
-  <footer class="page-footer">
-    <p>
-      &copy;
-      <span class="footer-logo">Quiztastic</span>
-      built by Team Remote
-    </p>
-  </footer>
+  <FooterComponent />
 </template>
 
 <style scoped>
@@ -121,14 +116,5 @@ a::after,
 a:hover::after,
 .category-link:hover::after {
   width: 100%;
-}
-
-.page-footer {
-  height: 4rem;
-  background: black;
-  color: aliceblue;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 </style>

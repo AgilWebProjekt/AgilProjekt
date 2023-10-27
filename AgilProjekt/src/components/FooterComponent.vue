@@ -1,31 +1,34 @@
 <template>
     <footer class="page-footer">
         <p>
-            &copy; {{ currentYear }}
-            <span class="footer-logo">Quiztastic</span>
+            &copy;
+            <a href="https://github.com/AgilWebProjekt" target="_blank">"Quiztastic"</a>
             built by Team Remote
         </p>
     </footer>
 </template>
   
-<script>
-export default {
-    data() {
-        return {
-            currentYear: new Date().getFullYear(),
-        };
-    },
-};
+<script setup>
 </script>
   
 <style scoped>
 .page-footer {
     height: 4rem;
-    background: black;
+    background-color: #005b41a7;
     color: aliceblue;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
+}
+
+.page-footer a{
+    color: aliceblue;
+    text-decoration: none;
+}
+
+.page-footer a::visited{
+    color: aliceblue;
 }
 </style>
   
