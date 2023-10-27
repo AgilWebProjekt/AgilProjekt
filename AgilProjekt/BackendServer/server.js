@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
 
-const db = require('./database/quiztasticQuestions.db');
+const db = new sqlite3.Database('./database/quiztasticQuestions.db');
 
 const app = express();
 const port = 3000;
