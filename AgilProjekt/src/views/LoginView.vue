@@ -1,10 +1,11 @@
 <script setup>
-
+import LoginPage from '../components/LoginPage.vue'
 
 </script>
 
 
 <template>
+  <LoginPage/>
     <div class="login">
       <h1>This is the login page</h1>
     </div>
