@@ -1,14 +1,3 @@
-<template>
-    <div>
-        <h1>Math Questions</h1>
-        <ul>
-            <li v-for="question in mathQuestions" :key="question.mathId">
-                {{ question.mathQuestion }}
-            </li>
-        </ul>
-    </div>
-</template>
-     
 <script setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
@@ -28,3 +17,21 @@ const fetchMathQuestions = async () => {
     }
 };
 </script>
+
+<template>
+    <div>
+        <h1>Math Questions</h1>
+        <ul>
+            <li v-for="question in mathQuestions" :key="question.mathId">
+                {{ question.mathQuestion }}
+            </li>
+        </ul>
+    </div>
+</template>
+     
+
+<style scoped>
+div{
+    color:aliceblue;
+}
+</style>

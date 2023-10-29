@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import { onMounted } from 'vue'
+/* import { onMounted } from 'vue'
 function fetchTest() {
   fetch('http://localhost:3000/').then(response => response.json()).then(data => {
     console.log('test', data)
@@ -9,7 +9,7 @@ function fetchTest() {
 }
 onMounted(() => {
   fetchTest()
-})
+}) */
 </script>
 
 <template>
@@ -28,9 +28,9 @@ onMounted(() => {
       <RouterLink to="/categories">Categories</RouterLink>
     </nav>
   </header>
-  <button @click="fetchTest">
+<!-- /*   <button @click="fetchTest">
     fetch
-  </button>
+  </button> */ -->
   <div class="homeview">
     <RouterView />
   </div>

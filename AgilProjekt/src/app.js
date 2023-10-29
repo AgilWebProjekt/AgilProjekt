@@ -36,11 +36,13 @@ app.delete('/user', function (req, res) {
 
 app.listen(port, () => console.log('Example app listening on port $ {port}!'))
 */
+import express from 'express';
+import bodyParser from 'body-parser';
 
-const express = require('express')
+//const express = require('express')
 const app_express = express()
 const port = 3000
-const bodyParser = require('body-parser')
+//const bodyParser = require('body-parser')
 
 //Använder static files
 app_express.use(express.static('src/views'))
