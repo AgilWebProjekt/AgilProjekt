@@ -36,7 +36,7 @@ app.delete('/user', function (req, res) {
 
 app.listen(port, () => console.log('Example app listening on port $ {port}!'))
 */
-import express from 'express';
+/* import express from 'express';
 import bodyParser from 'body-parser';
 
 //const express = require('express')
@@ -62,3 +62,4 @@ app_express.post('/user', function (req, res, next) {
 })
 
 app_express.listen(port, () => console.log(`Example app listening on port ${port}`))
+ */
