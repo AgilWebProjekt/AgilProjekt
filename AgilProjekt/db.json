@@ -239,6 +239,18 @@
       "password": "Vi1234@",
       "name": "Victor",
       "id": 40
+    },
+    {
+      "name": "Paulo",
+      "email": "paulo@test.com",
+      "password": "Pa123@",
+      "id": 41
+    },
+    {
+      "name": "Paulo2",
+      "email": "paulo2@test.com",
+      "password": "Pa2123@",
+      "id": 42
     }
   ]
 }
