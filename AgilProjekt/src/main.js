@@ -9,7 +9,7 @@ import gAuthPlugin from 'vue3-google-oauth2';
 
 const app = createApp(App)
 
-let gauthClientId = '947008065972-nrproajid5qg83bshd12hjmogtn0dsc8.apps.googleusercontent.com'
+let gauthClientId = '676785461988-icoil0dtlld2fcp5kb22llst7t94mans.apps.googleusercontent.com'
 app.use(gAuthPlugin, {
   clientId: gauthClientId,
   scope: 'email',

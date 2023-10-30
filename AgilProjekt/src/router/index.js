@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import Vue3GoogleOauth from  'vue3-google-oauth2'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,8 +21,10 @@ const router = createRouter({
     {
       path: '/quiz',
       name: 'quiz',
-      component: () => import('../views/QuizView.vue')
-    },
+      component: () => import('../views/QuizView.vue'),
+      meta: {
+        requiresAuth: true,
+    }},
     {
       path: '/login',
       name: 'login',
@@ -40,5 +43,18 @@ const router = createRouter({
     }
   ]
 })
+
+
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = Vue3GoogleOauth.isAuthorized;
+
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    next('/login');
+  } else if (isAuthenticated && to.path === '/login') {
+    next({ path: '/quiz', replace: true  });
+  } else {
+    next();
+  }
+});
 
 export default router
