@@ -1,30 +1,41 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
-<div>
-  <div class="info">
-    <h1> Welcome to Quiztastic!</h1>
-    <p>🚀 Welcome to the Ultimate Quiz Showdown! 🌟</p>
-    <p>Are you ready to put your knowledge to the test and embark on a 
-      thrilling trivia adventure? Whether you're a lone genius or a dynamic duo,
-      our quiz game is your ticket to hours of brain-teasing, laughter-inducing fun!
-    </p>
-    <p>🎮 How to Play:<br>
-      1️⃣ Solo Mode: Challenge yourself and become the trivia master as you tackle a wide range of mind-boggling questions. Will you claim the title of the Ultimate Quiz Champ?<br>
-      2️⃣ Duel Mode: Grab a friend, family member, or even a friendly rival for an epic head-to-head battle of wits! Test your skills, bragging rights are on the line!<br>
-      🌍 Explore Diverse Topics: From history's mysteries to mathematics, science to sports, and everything in between, our quizzes cover it all. Choose the topic and buckle up!
-    </p>
-    <p>Get ready to flex those brain muscles, have a blast, 
-      make lasting memories and become a legend! 
-      It's time to start quizzing! 🤓✨"
-    </p>
-  </div>
+  <div class="banner">
+    <div class="images-top">
+      <img title="history" src="..\assets\history.png" alt="history" />
+      <img title="science" src="..\assets\science.png" alt="science" />
+      <img title="language" src="..\assets\language.png" alt="language" />
+    </div>
 
-  <div class="images-top">
-    <img title="history" src="..\assets\history.png" alt="history">
-    <img title="science" src="..\assets\science.png" alt="science">
-    <img title="language" src="..\assets\language.png" alt="language">
+    <h1>Welcome to Quiztastic!</h1>
+
+    <div class="images-bottom">
+      <img title="maths" src="..\assets\maths.png" alt="mathematics" />
+      <img title="geography" src="..\assets\geography.png" alt="geography" />
+      <img title="sweden" src="..\assets\sweden.png" alt="sweden" />
+    </div>
+  </div>
+  <div class="info">
+    <p>🚀 Welcome to the Ultimate Quiz Showdown! 🌟</p>
+    <p>
+      Are you ready to put your knowledge to the test and embark on a thrilling trivia adventure?
+      Whether you're a lone genius or a dynamic duo, our quiz game is your ticket to hours of
+      brain-teasing, laughter-inducing fun!
+    </p>
+    <p>
+      🎮 How to Play:<br />
+      1️⃣ Solo Mode: Challenge yourself and become the trivia master as you tackle a wide range of
+      mind-boggling questions. Will you claim the title of the Ultimate Quiz Champ?<br />
+      2️⃣ Duel Mode: Grab a friend, family member, or even a friendly rival for an epic head-to-head
+      battle of wits! Test your skills, bragging rights are on the line!<br />
+      🌍 Explore Diverse Topics: From history's mysteries to mathematics, science to language, and
+      everything in between, our quizzes cover it all. Choose the topic and buckle up!
+    </p>
+    <p>
+      Get ready to flex those brain muscles, have a blast, make lasting memories and become a
+      legend! It's time to start quizzing! 🤓✨"
+    </p>
   </div>
 
   <div class="button">
@@ -32,36 +43,32 @@
       <button @click="navigate" role="link">LET'S GO</button>
     </RouterLink>
   </div>
-
-  <div class="images-bottom">
-    <img title="maths" src="..\assets\maths.png" alt="mathematics">
-    <img title="geography" src="..\assets\geography.png" alt="geography">
-    <img title="sweden" src="..\assets\sweden.png" alt="sweden">  
-  </div>
-</div>
 </template>
 
 <style scoped>
-p{
+.banner{
+  margin-top: 40px;
+}
+p {
   margin: 10px 80px;
 }
 
-h1{
+h1 {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 3em;
-  margin: 90px 0;
+  margin: 30px 0;
+  color: white;
 }
 
-.button{
+.button {
   display: flex;
   justify-content: space-around;
-
 }
 
-button{
-  background-color: #005B41;
+button {
+  background-color: #005b41;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -70,30 +77,40 @@ button{
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 100px;
-  margin-bottom: 100px;;
+  margin: 30px;
+  border-radius: 20px;
 }
 
-img{
-  width: 150px;
+img {
+  width: 120px;
   padding: 10px;
   margin: 10px;
 }
 
 img:hover {
   animation: wiggle 0.5s infinite;
-  animation-timing-function: linear;   
+  animation-timing-function: linear;
 }
 
 @keyframes wiggle {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(5px, 5px) rotate(5deg); }
-  50% { transform: translate(0, 0) rotate(0eg); }
-  75% { transform: translate(-5px, 5px) rotate(-5deg); }
-  100% { transform: translate(0, 0) rotate(0deg); }
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(5px, 5px) rotate(5deg);
+  }
+  50% {
+    transform: translate(0, 0) rotate(0eg);
+  }
+  75% {
+    transform: translate(-5px, 5px) rotate(-5deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
 }
 
-.images-top{
+.images-top {
   margin: 0 100px;
   animation-duration: 3s;
   animation-delay: 2s;
@@ -104,19 +121,19 @@ img:hover {
   animation-fill-mode: forwards;
 }
 
-@keyframes slideintop{
-  from{
+@keyframes slideintop {
+  from {
     margin-left: 100%;
     width: 200%;
   }
 
-  to{
+  to {
     margin-left: 5%;
     width: 90%;
   }
 }
 
-.images-bottom{
+.images-bottom {
   margin: 0 100px;
   animation-duration: 3s;
   animation-delay: 2s;
@@ -127,17 +144,15 @@ img:hover {
   animation-fill-mode: forwards;
 }
 
-@keyframes slideinbottom{
- from{
+@keyframes slideinbottom {
+  from {
     margin-left: -100%;
     width: 100%;
   }
 
-  to{
+  to {
     margin-left: 5%;
     width: 90%;
   }
-
-
 }
 </style>
