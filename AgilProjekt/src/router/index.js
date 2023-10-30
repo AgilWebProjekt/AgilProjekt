@@ -23,6 +23,11 @@ const router = createRouter({
       component: () => import('../views/QuizView.vue')
     },
     {
+      path: '/contact',
+      name: 'contact',
+      component: () => import('../views/ContactView.vue')
+    },
+    {
       path: '/login',
       name: 'login',
       // route level code-splitting

@@ -29,7 +29,7 @@ window.addEventListener('click', (event) => {
     </nav>
     <img alt="game logo" class="logo" src="@/assets/Quiztastic.png" width="150" height="150" />
     <nav>
-      <RouterLink to="/login">Login</RouterLink>
+      <RouterLink to="/contact">Login</RouterLink>
     </nav>
 
     <!--  <nav>
