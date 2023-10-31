@@ -5,6 +5,12 @@ import axios from 'axios'
 const questions = ref([])
 const currentQuestionIndex = ref(0)
 
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Swap the elements
+  }
+}
 
 onMounted(() => {
   fetchQuestions()
@@ -14,29 +20,30 @@ const fetchQuestions = async () => {
   try {
     const response = await axios.get('http://localhost:3000/api/mathematics')
     console.log(response.data)
-    questions.value = response.data
+    const fetchedQuestions = response.data
+    shuffleArray(fetchedQuestions)
+    questions.value = fetchedQuestions.slice(0, 5)
     console.log(questions.value)
     console.log(questions.value.at(currentQuestionIndex).mathQuestion)
     console.log(questions.value.length)
     console.log(questions.value.at(currentQuestionIndex).mathOption1)
-
   } catch (error) {
     console.error('Error fetching maths questions:', error)
   }
 }
 
-console.log(currentQuestionIndex.value)
+console.log('Current question index ', currentQuestionIndex.value)
 
 const currentQuestion = computed(() => {
   if (questions.value[currentQuestionIndex.value]) {
-    const q = questions.value[currentQuestionIndex.value];
+    const q = questions.value[currentQuestionIndex.value]
     return {
       ...q,
-      options: [q.mathOption1, q.mathOption2, q.mathOption3, q.mathOption4],
-    };
+      options: [q.mathOption1, q.mathOption2, q.mathOption3, q.mathOption4]
+    }
   }
-  return null;
-});
+  return null
+})
 
 const score = computed(() => {
   let value = 0
@@ -50,77 +57,76 @@ const score = computed(() => {
 
 const setAnswer = (evt, option) => {
   if (option === currentQuestion.value.mathAnswer) {
-    questions.value[currentQuestionIndex.value].isCorrect = true;
+    questions.value[currentQuestionIndex.value].isCorrect = true
   } else {
-    questions.value[currentQuestionIndex.value].isCorrect = false;
+    questions.value[currentQuestionIndex.value].isCorrect = false
   }
-  questions.value[currentQuestionIndex.value].selected = option;
-  console.log('Selected option:', currentQuestion.value.selected); // Add this line
-
+  questions.value[currentQuestionIndex.value].selected = option
+  console.log('Selected option:', currentQuestion.value.selected) // Add this line
 }
 
- const nextQuestion = () => {
+const quizCompleted = ref(false)
+
+console.log('Quiz completed ', quizCompleted)
+
+const nextQuestion = () => {
   if (currentQuestionIndex.value < questions.value.length - 1) {
     currentQuestionIndex.value++
-  } 
+    console.log('Quiz completed while questions', quizCompleted)
+  } else {
+    quizCompleted.value = true
+    console.log('Quiz completed after questions', quizCompleted)
+
+  }
 }
 </script>
 
 <template>
   <main class="quiz">
-    <div class="quiz-box">
+    <div class="quiz-box" v-if="currentQuestionIndex < questions.length && !quizCompleted">
       <div class="question-box">
-          <!-- <div class="timer-box">
+        <!-- <div class="timer-box">
           <input type="text" readonly class="timer" id="timer" :value="formatTime(timer)" />
         </div> -->
 
-         <h1>Math Questions</h1>
-        <div v-if=" currentQuestionIndex < questions.length">
-          {{ currentQuestion.mathQuestion }}
-        </div> 
-        
-        <!-- <button @click="previousQuestion" :disabled="currentQuestionIndex.value === 0">Previous</button>
-        <button @click="nextQuestion" :disabled="currentQuestionIndex.value === questions.length.value - 1">Next</button>
- -->
+        <h1>{{ currentQuestion.mathQuestion }}</h1>
       </div>
 
       <div class="option-box" v-if="currentQuestion">
-  <label
-    v-for="(option, index) in currentQuestion.options"
-    :key="index"
-    :class="`option ${
-      currentQuestion.selected === option
-        ? option == currentQuestion.mathAnswer
-          ? 'correct'
-          : 'wrong'
-        : ''
-    } 
+        <label
+          v-for="(option, index) in currentQuestion.options"
+          :key="index"
+          :class="`option ${
+            currentQuestion.selected === option
+              ? option == currentQuestion.mathAnswer
+                ? 'correct'
+                : 'wrong'
+              : ''
+          } 
                   ${
-                    currentQuestion.selected && option != currentQuestion.selected
-                      ? 'disabled'
-                      : ''
+                    currentQuestion.selected && option != currentQuestion.selected ? 'disabled' : ''
                   }`"
-  >
-  <input
-  type="radio"
-  :name="currentQuestion.mathId"
-  :value="option"
-  :checked="currentQuestion.selected === option"
-  :disabled="currentQuestion.selected"
-  @change="evt => setAnswer(evt, option)"
-/>
-    <div>{{ option }}</div>
-  </label>
-</div>
+        >
+          <input
+            type="radio"
+            :name="currentQuestion.mathId"
+            :value="option"
+            :checked="currentQuestion.selected === option"
+            :disabled="currentQuestion.selected"
+            @change="(evt) => setAnswer(evt, option)"
+          />
+          <div>{{ option }}</div>
+        </label>
+      </div>
 
       <button @click="nextQuestion">Next</button>
     </div>
-    <!-- <div class="score" v-else>
+    <div class="score" v-else-if="quizCompleted">
       <h2>You have finished the quiz!</h2>
       <p>
         You scored <span>{{ score }} / {{ questions.length }}</span> questions correct
       </p>
-    </div> -->
+    </div>
   </main>
 </template>
 
