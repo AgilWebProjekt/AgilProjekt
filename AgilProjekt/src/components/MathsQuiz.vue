@@ -16,8 +16,8 @@ const formatTime = (seconds) => {
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]; // Swap the elements
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]] // Swap the elements
   }
 }
 
@@ -28,21 +28,14 @@ onMounted(() => {
 const fetchQuestions = async () => {
   try {
     const response = await axios.get('http://localhost:3000/api/mathematics')
-    console.log(response.data)
     const fetchedQuestions = response.data
     shuffleArray(fetchedQuestions)
     questions.value = fetchedQuestions.slice(0, 5)
-    console.log(questions.value)
-    console.log(questions.value.at(currentQuestionIndex).mathQuestion)
-    console.log(questions.value.length)
-    console.log(questions.value.at(currentQuestionIndex).mathOption1)
   } catch (error) {
     console.error('Error fetching maths questions:', error)
   }
   countdown()
 }
-
-console.log('Current question index ', currentQuestionIndex.value)
 
 const currentQuestion = computed(() => {
   if (questions.value[currentQuestionIndex.value]) {
@@ -65,22 +58,16 @@ const setAnswer = (evt, option) => {
     questions.value[currentQuestionIndex.value].isCorrect = false
   }
   questions.value[currentQuestionIndex.value].selected = option
-  console.log('Selected option:', currentQuestion.value.selected) // Add this line
 }
 
 const quizCompleted = ref(false)
-
-console.log('Quiz completed ', quizCompleted)
 
 const nextQuestion = () => {
   if (currentQuestionIndex.value < questions.value.length - 1) {
     currentQuestionIndex.value++
     resetTimer()
-    console.log('Quiz completed while questions', quizCompleted)
   } else {
     quizCompleted.value = true
-    console.log('Quiz completed after questions', quizCompleted)
-
   }
 }
 
@@ -97,7 +84,7 @@ const countdown = () => {
     }
   }, 1000)
 
-onUnmounted(() => {
+  onUnmounted(() => {
     clearInterval(interval)
   })
 }
@@ -107,9 +94,9 @@ onUnmounted(() => {
   <main class="quiz">
     <div class="quiz-box" v-if="currentQuestionIndex < questions.length && !quizCompleted">
       <div class="question-box">
-         <div class="timer-box">
+        <div class="timer-box">
           <input type="text" readonly class="timer" id="timer" :value="formatTime(timer)" />
-        </div> 
+        </div>
 
         <h1>{{ currentQuestion.mathQuestion }}</h1>
       </div>
