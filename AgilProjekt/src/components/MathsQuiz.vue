@@ -18,6 +18,8 @@ const fetchQuestions = async () => {
     console.log(questions.value)
     console.log(questions.value.at(currentQuestionIndex).mathQuestion)
     console.log(questions.value.length)
+    console.log(questions.value.at(currentQuestionIndex).mathOption1)
+
   } catch (error) {
     console.error('Error fetching maths questions:', error)
   }
@@ -25,13 +27,42 @@ const fetchQuestions = async () => {
 
 console.log(currentQuestionIndex.value)
 
-const currentQuestion = computed(() => questions.value[currentQuestionIndex.value])
+const currentQuestion = computed(() => {
+  if (questions.value[currentQuestionIndex.value]) {
+    const q = questions.value[currentQuestionIndex.value];
+    return {
+      ...q,
+      options: [q.mathOption1, q.mathOption2, q.mathOption3, q.mathOption4],
+    };
+  }
+  return null;
+});
 
+const score = computed(() => {
+  let value = 0
+  questions.value.forEach((q) => {
+    if (q.selected === q.answer) {
+      value++
+    }
+  })
+  return value
+})
 
-const nextQuestion = () => {
+const setAnswer = (evt, option) => {
+  if (option === currentQuestion.value.mathAnswer) {
+    questions.value[currentQuestionIndex.value].isCorrect = true;
+  } else {
+    questions.value[currentQuestionIndex.value].isCorrect = false;
+  }
+  questions.value[currentQuestionIndex.value].selected = option;
+  console.log('Selected option:', currentQuestion.value.selected); // Add this line
+
+}
+
+ const nextQuestion = () => {
   if (currentQuestionIndex.value < questions.value.length - 1) {
     currentQuestionIndex.value++
-  }
+  } 
 }
 </script>
 
@@ -53,34 +84,35 @@ const nextQuestion = () => {
  -->
       </div>
 
-      <!-- <div class="option-box">
-        <label
-          v-for="(option, index) in currentQuestion.options"
-          :key="index"
-          :class="`option ${
-            currentQuestion.selected == index
-              ? index == currentQuestion.answer
-                ? 'correct'
-                : 'wrong'
-              : ''
-          } 
-                        ${
-                          currentQuestion.selected != null && index != currentQuestion.selected
-                            ? 'disabled'
-                            : ''
-                        }`"
-        >
-          <input
-            type="radio"
-            :name="currentQuestion.index"
-            :value="index"
-            v-model="currentQuestion.selected"
-            :disabled="currentQuestion.selected"
-            @change="setAnswer"
-          />
-          <div>{{ option }}</div>
-        </label>
-      </div> -->
+      <div class="option-box" v-if="currentQuestion">
+  <label
+    v-for="(option, index) in currentQuestion.options"
+    :key="index"
+    :class="`option ${
+      currentQuestion.selected === option
+        ? option == currentQuestion.mathAnswer
+          ? 'correct'
+          : 'wrong'
+        : ''
+    } 
+                  ${
+                    currentQuestion.selected && option != currentQuestion.selected
+                      ? 'disabled'
+                      : ''
+                  }`"
+  >
+  <input
+  type="radio"
+  :name="currentQuestion.mathId"
+  :value="option"
+  :checked="currentQuestion.selected === option"
+  :disabled="currentQuestion.selected"
+  @change="evt => setAnswer(evt, option)"
+/>
+    <div>{{ option }}</div>
+  </label>
+</div>
+
       <button @click="nextQuestion">Next</button>
     </div>
     <!-- <div class="score" v-else>
@@ -153,11 +185,11 @@ h1 {
   color: white;
 }
 
-correct {
+.option.correct {
   background-color: #2cce7d;
 }
 
-wrong {
+.option.wrong {
   background-color: #ff5a5f;
 }
 
@@ -195,5 +227,10 @@ button {
   background-color: #2cce7d;
   padding: 2px 5px;
   color: black;
+}
+
+label.option.disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 </style>
