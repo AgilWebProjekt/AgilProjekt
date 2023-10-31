@@ -1,99 +1,96 @@
 <script setup>
-import { ref, computed } from "vue";
-import axios from "axios";
+import { ref, onMounted, computed } from 'vue'
+import axios from 'axios'
 
-const quizData = ref([]);
-const currentQuestionIndex = ref(0);
-const score = ref(0);
-const selectedAnswer = ref(null);
+const questions = ref([])
+const currentQuestionIndex = ref(0)
 
-const fetchQuizData = async (subject) => {
+
+onMounted(() => {
+  fetchQuestions()
+})
+
+const fetchQuestions = async () => {
   try {
-    const response = await axios.get(`http://localhost:3000/api/${subject}`);
-    quizData.value = response.data;
+    const response = await axios.get('http://localhost:3000/api/mathematics')
+    console.log(response.data)
+    questions.value = response.data
+    console.log(questions.value)
+    console.log(questions.value.at(currentQuestionIndex).mathQuestion)
+    console.log(questions.value.length)
   } catch (error) {
-    console.error("Error fetching quiz data:", error);
+    console.error('Error fetching maths questions:', error)
   }
-};
+}
 
-fetchQuizData("science"); // or "science"
+console.log(currentQuestionIndex.value)
 
-const currentQuestion = computed(() => {
-  if (quizData.value.length > 0) {
-    const question = quizData.value[currentQuestionIndex.value];
-    if (question.scienceQuestion) {  // Check if it's a science question
-      return {
-        question: question.scienceQuestion,
-        options: [
-          question.scienceOption1,
-          question.scienceOption2,
-          question.scienceOption3,
-          question.scienceOption4,
-        ],
-        answer: question.scienceAnswer,
-      };
-    }
-    // You can add similar blocks for mathQuestion and any other type if necessary
-  }
-return null;
-});
+const currentQuestion = computed(() => questions.value[currentQuestionIndex.value])
 
-const checkAnswer = (option) => {
-  if (option === currentQuestion.value.answer) {
-    score.value++;
-    selectedAnswer.value = "correct";
-  } else {
-    selectedAnswer.value = "wrong";
-  }
-};
 
 const nextQuestion = () => {
-  currentQuestionIndex.value++;
-  selectedAnswer.value = null;
-};
-
-const isLastQuestion = computed(
-  () => currentQuestionIndex.value === quizData.value.length - 1
-);
-
-const getButtonClass = (index) => {
-  if (!currentQuestion.value.options || !currentQuestion.value.answer || !selectedAnswer.value) return "";
-
-  const correctAnswerIndex = currentQuestion.value.options.indexOf(currentQuestion.value.answer);
-  if (selectedAnswer.value === "correct" && index === correctAnswerIndex) {
-    return "correct";
+  if (currentQuestionIndex.value < questions.value.length - 1) {
+    currentQuestionIndex.value++
   }
-  if (selectedAnswer.value === "wrong" && index === correctAnswerIndex) {
-    return "correct";
-  }
-  return "";
-};
-
-console.log('quizData:', quizData.value);
-console.log('currentQuestionIndex:', currentQuestionIndex.value);
-console.log('currentQuestion:', currentQuestion);
+}
 </script>
 
-
 <template>
-    <div v-if="quizData && currentQuestion.value">
-      <h2>{{ currentQuestion.value.question }}</h2>
-      <div v-for="(option, index) in currentQuestion.value.options" :key="index">
-        <button
-          :class="getButtonClass(index)"
-          @click="checkAnswer(option)"
+  <main class="quiz">
+    <div class="quiz-box">
+      <div class="question-box">
+          <!-- <div class="timer-box">
+          <input type="text" readonly class="timer" id="timer" :value="formatTime(timer)" />
+        </div> -->
+
+         <h1>Math Questions</h1>
+        <div v-if=" currentQuestionIndex < questions.length">
+          {{ currentQuestion.mathQuestion }}
+        </div> 
+        
+        <!-- <button @click="previousQuestion" :disabled="currentQuestionIndex.value === 0">Previous</button>
+        <button @click="nextQuestion" :disabled="currentQuestionIndex.value === questions.length.value - 1">Next</button>
+ -->
+      </div>
+
+      <!-- <div class="option-box">
+        <label
+          v-for="(option, index) in currentQuestion.options"
+          :key="index"
+          :class="`option ${
+            currentQuestion.selected == index
+              ? index == currentQuestion.answer
+                ? 'correct'
+                : 'wrong'
+              : ''
+          } 
+                        ${
+                          currentQuestion.selected != null && index != currentQuestion.selected
+                            ? 'disabled'
+                            : ''
+                        }`"
         >
-          {{ option }}
-        </button>
-      </div>
-  
-      <button @click="nextQuestion" v-if="!isLastQuestion">Next</button>
-  
-      <div v-if="isLastQuestion">
-        Your score is: {{ score }}/{{ quizData?.length }}
-      </div>
+          <input
+            type="radio"
+            :name="currentQuestion.index"
+            :value="index"
+            v-model="currentQuestion.selected"
+            :disabled="currentQuestion.selected"
+            @change="setAnswer"
+          />
+          <div>{{ option }}</div>
+        </label>
+      </div> -->
+      <button @click="nextQuestion">Next</button>
     </div>
-  </template>
+    <!-- <div class="score" v-else>
+      <h2>You have finished the quiz!</h2>
+      <p>
+        You scored <span>{{ score }} / {{ questions.length }}</span> questions correct
+      </p>
+    </div> -->
+  </main>
+</template>
 
 <style>
 .quiz {
@@ -133,7 +130,7 @@ console.log('currentQuestion:', currentQuestion);
   font-size: 1rem;
 }
 
-h1{
+h1 {
   margin-top: 15px;
 }
 
