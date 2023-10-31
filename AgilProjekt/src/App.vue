@@ -56,6 +56,8 @@ window.addEventListener('click', (event) => {
     </div>
   </header>
   <RouterView />
+
+  <FooterComponent />
 </template>
 
 <style scoped>
