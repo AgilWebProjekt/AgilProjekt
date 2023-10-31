@@ -8,7 +8,7 @@
     <label for="lname">Last Name</label>
     <input type="text" id="lname" name="lastname" placeholder="Your last name..">
 
-    <label for="massage">massage</label>
+    <label for="massage">Massage</label>
     <input type="text" id="massage" name="massage" placeholder="Write to us">
   
     <input type="submit" value="Submit">
