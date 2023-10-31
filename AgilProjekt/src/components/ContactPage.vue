@@ -1,26 +1,24 @@
+
 <template>
-    <div>
-  <form action="/action_page.php">
-    <h1>Contact Us</h1>
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+  <div>
+    <form action="javascript:void(0);">
+      <h1>Contact Us</h1>
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" name="lastname" placeholder="Your last name..">
 
-    <label for="massage">Massage</label>
-    <input type="text" id="massage" name="massage" placeholder="Write to us">
+      <label for="massage">Message</label>
+      <textarea id="massage" name="massage" rows="9"></textarea>
   
-    <input type="submit" value="Submit">
-  </form>
-</div>
-
+      <input type="submit" id="submitBtn" value="Submit">
+    </form>
+  </div>
 </template>
 
 <style>
-
- 
-input[type=text], select {
+input[type=text], textarea {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
