@@ -45,19 +45,12 @@ const currentQuestion = computed(() => {
   return null
 })
 
-const score = computed(() => {
-  let value = 0
-  questions.value.forEach((q) => {
-    if (q.selected === q.answer) {
-      value++
-    }
-  })
-  return value
-})
+const score = ref(0)
 
 const setAnswer = (evt, option) => {
   if (option === currentQuestion.value.mathAnswer) {
     questions.value[currentQuestionIndex.value].isCorrect = true
+    score.value++
   } else {
     questions.value[currentQuestionIndex.value].isCorrect = false
   }
