@@ -1,9 +1,18 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, onUnmounted } from 'vue'
 import axios from 'axios'
 
 const questions = ref([])
 const currentQuestionIndex = ref(0)
+const timer = ref(15)
+
+const formatTime = (seconds) => {
+  const minutes = Math.floor(seconds / 60)
+  const remainingSeconds = seconds % 60
+  const formattedMinutes = String(minutes).padStart(2, '0')
+  const formattedSeconds = String(remainingSeconds).padStart(2, '0')
+  return `Time remaining: ${formattedMinutes}:${formattedSeconds}`
+}
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -30,6 +39,7 @@ const fetchQuestions = async () => {
   } catch (error) {
     console.error('Error fetching maths questions:', error)
   }
+  countdown()
 }
 
 console.log('Current question index ', currentQuestionIndex.value)
@@ -65,6 +75,7 @@ console.log('Quiz completed ', quizCompleted)
 const nextQuestion = () => {
   if (currentQuestionIndex.value < questions.value.length - 1) {
     currentQuestionIndex.value++
+    resetTimer()
     console.log('Quiz completed while questions', quizCompleted)
   } else {
     quizCompleted.value = true
@@ -72,15 +83,33 @@ const nextQuestion = () => {
 
   }
 }
+
+const resetTimer = () => {
+  timer.value = 15
+}
+
+const countdown = () => {
+  const interval = setInterval(() => {
+    if (timer.value > 0) {
+      timer.value--
+    } else {
+      nextQuestion()
+    }
+  }, 1000)
+
+onUnmounted(() => {
+    clearInterval(interval)
+  })
+}
 </script>
 
 <template>
   <main class="quiz">
     <div class="quiz-box" v-if="currentQuestionIndex < questions.length && !quizCompleted">
       <div class="question-box">
-        <!-- <div class="timer-box">
+         <div class="timer-box">
           <input type="text" readonly class="timer" id="timer" :value="formatTime(timer)" />
-        </div> -->
+        </div> 
 
         <h1>{{ currentQuestion.mathQuestion }}</h1>
       </div>
