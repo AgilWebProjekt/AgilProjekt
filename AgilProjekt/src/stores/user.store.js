@@ -1,24 +1,24 @@
 import { defineStore } from 'pinia';
 
-import { fetchWrapper } from '@/helpers';
+import axios from 'axios'
 import { useAuthStore } from '@/stores';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/users`;
+const baseUrl = `${import.meta.env.VITE_API_URL}/user`;
 
 export const useUsersStore = defineStore({
-    id: 'users',
+    id: 'user',
     state: () => ({
         users: {},
         user: {}
     }),
     actions: {
         async register(user) {
-            await fetchWrapper.post(`${baseUrl}/register`, user);
+            await axios.post(`${baseUrl}/register`, user);
         },
         async getAll() {
             this.users = { loading: true };
             try {
-                this.users = await fetchWrapper.get(baseUrl);    
+                this.users = await axios.get(baseUrl);    
             } catch (error) {
                 this.users = { error };
             }
@@ -26,13 +26,13 @@ export const useUsersStore = defineStore({
         async getById(id) {
             this.user = { loading: true };
             try {
-                this.user = await fetchWrapper.get(`${baseUrl}/${id}`);
+                this.user = await axios.get(`${baseUrl}/${id}`);
             } catch (error) {
                 this.user = { error };
             }
         },
         async update(id, params) {
-            await fetchWrapper.put(`${baseUrl}/${id}`, params);
+            await axios.put(`${baseUrl}/${id}`, params);
 
             // update stored user if the logged in user updated their own record
             const authStore = useAuthStore();
@@ -49,7 +49,7 @@ export const useUsersStore = defineStore({
             // add isDeleting prop to user being deleted
             this.users.find(x => x.id === id).isDeleting = true;
 
-            await fetchWrapper.delete(`${baseUrl}/${id}`);
+            await axios.delete(`${baseUrl}/${id}`);
 
             // remove user from list after deleted
             this.users = this.users.filter(x => x.id !== id);

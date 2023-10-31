@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia';
 
-//import { fetchWrapper } from '@/helpers';
+import axios from 'axios';
 import { router } from '@/router';
-//import { useAlertStore } from '@/stores';
+import { useAlertStore } from '@/stores';
 
-const baseUrl = `${import.meta.env.VITE_API_URL}/users`;
+const baseUrl = `${import.meta.env.VITE_API_URL}/user`;
 
 export const useAuthStore = defineStore({
     id: 'auth',
@@ -16,7 +16,7 @@ export const useAuthStore = defineStore({
     actions: {
         async login(username, password) {
             try {
-                const user = await fetchWrapper.post(`${baseUrl}/authenticate`, { username, password });    
+                const user = await axios.post(`${baseUrl}/authenticate`, { username, password });    
 
                 // update pinia state
                 this.user = user;
@@ -34,7 +34,7 @@ export const useAuthStore = defineStore({
         logout() {
             this.user = null;
             localStorage.removeItem('user');
-            router.push('/account/login');
+            router.push('/login');
         }
     }
 });

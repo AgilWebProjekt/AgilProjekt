@@ -18,7 +18,7 @@ const schema = Yup.object().shape({
 
 <template>
   <div class="card m-3">
-    <h4 class="card-header">Login</h4>
+    <h2 class="card-header">Login</h2>
     <div class="card-body">
       <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }">
         <div class="form-group">

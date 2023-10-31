@@ -159,7 +159,7 @@ const schema = Yup.object().shape({
   const alertStore = useAlertStore()
   try {
     await usersStore.register(values)
-    await router.push('/account/login')
+    await router.push('/login')
     alertStore.success('Registration successful')
   } catch (error) {
     alertStore.error(error)
