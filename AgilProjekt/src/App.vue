@@ -4,6 +4,8 @@ import { RouterLink, RouterView } from 'vue-router'
 
 
 import { ref } from 'vue'
+import FooterComponent from './components/FooterComponent.vue';
+
 
 const showDropdown = ref(false)
 
@@ -18,7 +20,6 @@ window.addEventListener('click', (event) => {
 })
 
 </script>
-
 <template>
   <header>
     <nav>
@@ -55,6 +56,8 @@ window.addEventListener('click', (event) => {
     </div>
   </header>
   <RouterView />
+
+  <FooterComponent />
 </template>
 
 <style scoped>
