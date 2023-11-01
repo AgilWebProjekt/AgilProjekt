@@ -22,7 +22,6 @@ const formattedTime = computed(() => {
 })
 
 watchEffect(() => {
-    console.log('Timer:', timer.value, 'Paused:', isTimerPaused.value)
   if (timer.value > 0 && !isTimerPaused.value) {
     timerInterval = setTimeout(() => {
       timer.value--
@@ -37,7 +36,6 @@ watchEffect(() => {
 })
 
 const pause = () => {
-    console.log('Pausing timer')
   isTimerPaused.value = true
   if (timerInterval) {
     clearTimeout(timerInterval)
@@ -45,7 +43,6 @@ const pause = () => {
 }
 
 const resume = () => {
-    console.log('Resuming timer')
   isTimerPaused.value = false
 }
 

@@ -7,17 +7,7 @@ import axios from 'axios'
 
 const questions = ref([])
 const currentQuestionIndex = ref(0)
-//const timer = ref(20)
 const timerRef = ref(null)
-
-
-/* const formatTime = (seconds) => {
-  const minutes = Math.floor(seconds / 60)
-  const remainingSeconds = seconds % 60
-  const formattedMinutes = String(minutes).padStart(2, '0')
-  const formattedSeconds = String(remainingSeconds).padStart(2, '0')
-  return `Time remaining: ${formattedMinutes}:${formattedSeconds}`
-} */
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -28,7 +18,6 @@ function shuffleArray(array) {
 
 onMounted(() => {
   fetchQuestions()
-  //countdown()
 })
 
 const fetchQuestions = async () => {
@@ -75,34 +64,14 @@ const nextQuestion = () => {
     currentQuestionIndex.value++
     timerRef.value.reset()
     timerRef.value.resume()
-    //resetTimer()
   } else {
     quizCompleted.value = true
   }
 }
 
-/* const resetTimer = () => {
-  timer.value = 20
-} */
-
-/* const countdown = () => {
-  const interval = setInterval(() => {
-    if (timer.value > 0) {
-      timer.value--
-    } else {
-      nextQuestion()
-    }
-  }, 1000)
-
-  onUnmounted(() => {
-    clearInterval(interval)
-  })
-} */
-
 const hintPopupTrigger = ref()
 
 const handleHintPopupVisibility = (visible) => {
-  console.log('Handle hint popup:', visible)
   hintPopupTrigger.value = visible
   if (visible) {
     timerRef.value.pause()
