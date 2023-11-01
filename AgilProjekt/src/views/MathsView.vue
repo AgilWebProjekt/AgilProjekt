@@ -4,6 +4,6 @@ import MathsQuiz from '../components/MathsQuiz.vue'
 
 <template>
   <main>
-    <MathsQuiz />
+    <MathsQuiz category="mathematics" />
   </main>
 </template>

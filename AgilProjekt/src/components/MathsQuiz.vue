@@ -5,6 +5,13 @@ import { ref, onMounted, computed } from 'vue'
 
 import axios from 'axios'
 
+const props = defineProps({
+  category: {
+    type: String,
+    required: true
+  }
+})
+
 const questions = ref([])
 const currentQuestionIndex = ref(0)
 const timerRef = ref(null)
@@ -22,12 +29,12 @@ onMounted(() => {
 
 const fetchQuestions = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/api/mathematics')
+    const response = await axios.get(`http://localhost:3000/api/${props.category}`)
     const fetchedQuestions = response.data
     shuffleArray(fetchedQuestions)
     questions.value = fetchedQuestions.slice(0, 5)
   } catch (error) {
-    console.error('Error fetching maths questions:', error)
+    console.error('Error fetching ${category.value} questions:', error)
   }
   
 }
@@ -35,15 +42,21 @@ const fetchQuestions = async () => {
 const currentQuestion = computed(() => {
   if (questions.value[currentQuestionIndex.value]) {
     const q = questions.value[currentQuestionIndex.value]
+    const prefix = props.category
     return {
       ...q,
-      id: q.mathId,
-      question: q.mathQuestion,
-      options: [q.mathOption1, q.mathOption2, q.mathOption3, q.mathOption4],
-      answer: q.mathAnswer,
-      hint: q.mathHints
-
-    }
+      id: q[`${prefix}Id`],
+      question: q[`${prefix}Question`],
+      options: [
+        q[`${prefix}Option1`],
+        q[`${prefix}Option2`],
+        q[`${prefix}Option3`],
+        q[`${prefix}Option4`]
+      ],
+      answer: q[`${prefix}Answer`],
+      hint: q[`${prefix}Hints`]
+    };
+    
   }
   return null
 })
@@ -87,7 +100,7 @@ const handleHintPopupVisibility = (visible) => {
 
 <template>
   <main class="quiz">
-    <h1 class="heading">Mathematics</h1>
+    <h1 class="heading">{{category}}</h1>
     <div class="quiz-box" v-if="currentQuestionIndex < questions.length && !quizCompleted">
       <div class="question-box">
         <div class="hint-and-timer">
@@ -97,7 +110,7 @@ const handleHintPopupVisibility = (visible) => {
           <HintPopupComponent
             :visible="hintPopupTrigger"
             :hint="currentQuestion.hint"
-            category="mathematics"
+            category=props.category
             @update:visible="handleHintPopupVisibility($event)"
           />
           <TimerComponent :onTimeout="nextQuestion" ref="timerRef" />
@@ -154,6 +167,7 @@ const handleHintPopupVisibility = (visible) => {
 }
 
 .heading {
+  text-transform: capitalize;
   color: white;
   margin-bottom: 3rem;
   font-size: 2.5rem;
