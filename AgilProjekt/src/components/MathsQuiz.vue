@@ -114,6 +114,7 @@ const handleHintPopupVisibility = (visible) => {
 
 <template>
   <main class="quiz">
+    <h1 class="heading">Mathematics</h1>
     <div class="quiz-box" v-if="currentQuestionIndex < questions.length && !quizCompleted">
       <div class="question-box">
         <div class="hint-and-timer">
@@ -180,6 +181,12 @@ const handleHintPopupVisibility = (visible) => {
   align-items: center;
   padding: 2rem;
   margin-top: 2rem;
+}
+
+.heading {
+  color: white;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
 }
 
 .quiz-box {
