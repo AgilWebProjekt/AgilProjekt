@@ -94,9 +94,11 @@ const countdown = () => {
   <main class="quiz">
     <div class="quiz-box" v-if="currentQuestionIndex < questions.length && !quizCompleted">
       <div class="question-box">
+        <div class="hint-and-timer">
+        <button class="hint-button"><img class="hint-img" src="..\assets\551080.png"></button>
         <div class="timer-box">
           <input type="text" readonly class="timer" id="timer" :value="formatTime(timer)" />
-        </div>
+        </div></div>
 
         <h1>{{ currentQuestion.mathQuestion }}</h1>
       </div>
@@ -163,6 +165,22 @@ const countdown = () => {
   color: white;
   display: flex;
   flex-direction: column;
+}
+
+.hint-and-timer{
+  display: flex;
+  justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+    
+}
+
+.hint-button{
+  width: 2.5rem;
+  background-color: #008170;
+}
+.hint-img {
+  width: 2.5rem;
 }
 
 .timer-box {
