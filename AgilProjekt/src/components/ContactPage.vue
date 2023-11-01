@@ -53,8 +53,7 @@ const isValid = () => {
 </template>
 
 
-
-<style>
+<style scoped>
 .thanks{
    padding: 25px 50px;
     color: white;
@@ -73,7 +72,7 @@ input[type=text], textarea {
 
 input[type=submit] {
   width: 100%;
-  background-color: #4CAF50;
+  background-color: #005b41;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
