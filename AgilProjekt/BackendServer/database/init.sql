@@ -1,12 +1,12 @@
 CREATE TABLE mathematics (
-    mathId INTEGER PRIMARY KEY,
-    mathQuestion TEXT,
-    mathOption1 TEXT,
-    mathOption2 TEXT,
-    mathOption3 TEXT,
-    mathOption4 TEXT,
-    mathAnswer TEXT,
-    mathHints TEXT
+    mathematicsId INTEGER PRIMARY KEY,
+    mathematicsQuestion TEXT,
+    mathematicsOption1 TEXT,
+    mathematicsOption2 TEXT,
+    mathematicsOption3 TEXT,
+    mathematicsOption4 TEXT,
+    mathematicsAnswer TEXT,
+    mathematicsHints TEXT
 );
 
 CREATE TABLE science (
@@ -64,7 +64,7 @@ CREATE TABLE sweden (
     swedenHints TEXT
 );
 
-INSERT INTO mathematics (mathId, mathQuestion, mathOption1, mathOption2, mathOption3, mathOption4, mathAnswer, mathHints) VALUES
+INSERT INTO mathematics (mathematicsId, mathematicsQuestion, mathematicsOption1, mathematicsOption2, mathematicsOption3, mathematicsOption4, mathematicsAnswer, mathematicsHints) VALUES
 (1, 'What is the value of π (pi) to two decimal places?', '3.14', '3.16', '3.18', '3.20', '3.14', 'The value of pi to four decimal places is 3.1415'),
 (2, 'What is the highest common factor of the numbers 30 and 132?', '2', '12', '6', '3', '6', 'It is not 12'),
 (3, 'If 1=3, 2=3, 3=5, 4=4, and 5=4, what is 6=?', '6', '5', '4', '3', '3', 'Spelling out the numbers might help'),
