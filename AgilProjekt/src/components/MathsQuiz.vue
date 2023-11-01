@@ -97,9 +97,6 @@ const handleHintPopupVisibility = (visible) => {
             @update:visible="handleHintPopupVisibility($event)"
           />
           <TimerComponent :onTimeout="nextQuestion" ref="timerRef" />
-         <!--  <div class="timer-box">
-            <input type="text" readonly class="timer" id="timer" :value="formatTime(timer)" />
-          </div> -->
         </div>
 
         <h1>{{ currentQuestion.mathQuestion }}</h1>
