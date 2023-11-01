@@ -2,8 +2,9 @@
     <footer class="page-footer">
         <p>
             &copy;
-            <a href="https://github.com/AgilWebProjekt" target="_blank">"Quiztastic"</a>
-            built by Team Remote
+            <a href="https://github.com/AgilWebProjekt" target="_blank">Quiztastic</a>
+            built by Team Remote |
+            <a href="/contact" target="_blank">Contact Us</a>
         </p>
     </footer>
 </template>
@@ -22,13 +23,13 @@
     margin-top: 2rem;
 }
 
-.page-footer a{
+.page-footer a {
     color: aliceblue;
     text-decoration: none;
+    margin: 0 1rem; /* Add some spacing between links */
 }
 
-.page-footer a::visited{
+.page-footer a::visited {
     color: aliceblue;
 }
 </style>
-  

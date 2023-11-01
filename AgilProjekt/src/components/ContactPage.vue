@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <form action="javascript:void(0);">
+    <form id="contactForm">
       <h1>Contact Us</h1>
       <label for="fname">First Name</label>
       <input type="text" id="fname" name="firstname" placeholder="Your name..">
