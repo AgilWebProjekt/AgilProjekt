@@ -46,7 +46,7 @@ window.addEventListener('click', (event) => {
       </nav>
       <div v-if="showDropdown" class="dropdown-content">
         <RouterLink to="/categories/history">History</RouterLink>
-        <RouterLink to="/categories/maths">Mathematics</RouterLink>
+        <RouterLink to="/categories/mathematics">Mathematics</RouterLink>
         <RouterLink to="/categories/science">Science</RouterLink>
         <RouterLink to="/categories/geography">Geography</RouterLink>
         <RouterLink to="/categories/language">Language</RouterLink>

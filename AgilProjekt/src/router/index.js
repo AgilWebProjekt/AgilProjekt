@@ -52,7 +52,7 @@ const router = createRouter({
       component: () => import('../views/HistoryView.vue')
     },
     {
-      path: '/categories/maths',
+      path: '/categories/mathematics',
       name: 'mathematics',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route

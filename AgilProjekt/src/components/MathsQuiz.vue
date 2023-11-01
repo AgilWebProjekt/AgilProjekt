@@ -1,5 +1,7 @@
 <script setup>
+import HintPopupComponent from './HintPopupComponent.vue'
 import { ref, onMounted, computed, onUnmounted } from 'vue'
+
 import axios from 'axios'
 
 const questions = ref([])
@@ -42,7 +44,8 @@ const currentQuestion = computed(() => {
     const q = questions.value[currentQuestionIndex.value]
     return {
       ...q,
-      options: [q.mathOption1, q.mathOption2, q.mathOption3, q.mathOption4]
+      options: [q.mathOption1, q.mathOption2, q.mathOption3, q.mathOption4],
+      hint: q.mathHints
     }
   }
   return null
@@ -88,6 +91,8 @@ const countdown = () => {
     clearInterval(interval)
   })
 }
+
+const hintPopupTrigger = ref(false)
 </script>
 
 <template>
@@ -95,10 +100,19 @@ const countdown = () => {
     <div class="quiz-box" v-if="currentQuestionIndex < questions.length && !quizCompleted">
       <div class="question-box">
         <div class="hint-and-timer">
-        <button class="hint-button"><img class="hint-img" src="..\assets\551080.png"></button>
-        <div class="timer-box">
-          <input type="text" readonly class="timer" id="timer" :value="formatTime(timer)" />
-        </div></div>
+          <button class="hint-button" @click="hintPopupTrigger = true">
+            <img class="hint-img" src="..\assets\551080.png" />
+          </button>
+          <HintPopupComponent
+            :visible="hintPopupTrigger"
+            :hint="currentQuestion.hint"
+            category="mathematics"
+            @update:visible="hintPopupTrigger = $event"
+          />
+          <div class="timer-box">
+            <input type="text" readonly class="timer" id="timer" :value="formatTime(timer)" />
+          </div>
+        </div>
 
         <h1>{{ currentQuestion.mathQuestion }}</h1>
       </div>
@@ -167,15 +181,14 @@ const countdown = () => {
   flex-direction: column;
 }
 
-.hint-and-timer{
+.hint-and-timer {
   display: flex;
   justify-content: space-between;
-    align-items: center;
-    height: 3rem;
-    
+  align-items: center;
+  height: 3rem;
 }
 
-.hint-button{
+.hint-button {
   width: 2.5rem;
   background-color: #008170;
 }
