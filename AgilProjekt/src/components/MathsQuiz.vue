@@ -1,20 +1,23 @@
 <script setup>
+import TimerComponent from './TimerComponent.vue'
 import HintPopupComponent from './HintPopupComponent.vue'
-import { ref, onMounted, computed, onUnmounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 
 import axios from 'axios'
 
 const questions = ref([])
 const currentQuestionIndex = ref(0)
-const timer = ref(15)
+//const timer = ref(20)
+const timerRef = ref(null)
 
-const formatTime = (seconds) => {
+
+/* const formatTime = (seconds) => {
   const minutes = Math.floor(seconds / 60)
   const remainingSeconds = seconds % 60
   const formattedMinutes = String(minutes).padStart(2, '0')
   const formattedSeconds = String(remainingSeconds).padStart(2, '0')
   return `Time remaining: ${formattedMinutes}:${formattedSeconds}`
-}
+} */
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -25,6 +28,7 @@ function shuffleArray(array) {
 
 onMounted(() => {
   fetchQuestions()
+  //countdown()
 })
 
 const fetchQuestions = async () => {
@@ -36,7 +40,7 @@ const fetchQuestions = async () => {
   } catch (error) {
     console.error('Error fetching maths questions:', error)
   }
-  countdown()
+  
 }
 
 const currentQuestion = computed(() => {
@@ -54,6 +58,7 @@ const currentQuestion = computed(() => {
 const score = ref(0)
 
 const setAnswer = (evt, option) => {
+  timerRef.value.pause()
   if (option === currentQuestion.value.mathAnswer) {
     questions.value[currentQuestionIndex.value].isCorrect = true
     score.value++
@@ -68,17 +73,19 @@ const quizCompleted = ref(false)
 const nextQuestion = () => {
   if (currentQuestionIndex.value < questions.value.length - 1) {
     currentQuestionIndex.value++
-    resetTimer()
+    timerRef.value.reset()
+    timerRef.value.resume()
+    //resetTimer()
   } else {
     quizCompleted.value = true
   }
 }
 
-const resetTimer = () => {
-  timer.value = 15
-}
+/* const resetTimer = () => {
+  timer.value = 20
+} */
 
-const countdown = () => {
+/* const countdown = () => {
   const interval = setInterval(() => {
     if (timer.value > 0) {
       timer.value--
@@ -90,9 +97,19 @@ const countdown = () => {
   onUnmounted(() => {
     clearInterval(interval)
   })
-}
+} */
 
-const hintPopupTrigger = ref(false)
+const hintPopupTrigger = ref()
+
+const handleHintPopupVisibility = (visible) => {
+  console.log('Handle hint popup:', visible)
+  hintPopupTrigger.value = visible
+  if (visible) {
+    timerRef.value.pause()
+  } else {
+    timerRef.value.resume()
+  }
+}
 </script>
 
 <template>
@@ -100,18 +117,19 @@ const hintPopupTrigger = ref(false)
     <div class="quiz-box" v-if="currentQuestionIndex < questions.length && !quizCompleted">
       <div class="question-box">
         <div class="hint-and-timer">
-          <button class="hint-button" @click="hintPopupTrigger = true">
+          <button class="hint-button" @click="handleHintPopupVisibility(true)">
             <img class="hint-img" src="..\assets\551080.png" />
           </button>
           <HintPopupComponent
             :visible="hintPopupTrigger"
             :hint="currentQuestion.hint"
             category="mathematics"
-            @update:visible="hintPopupTrigger = $event"
+            @update:visible="handleHintPopupVisibility($event)"
           />
-          <div class="timer-box">
+          <TimerComponent :onTimeout="nextQuestion" ref="timerRef" />
+         <!--  <div class="timer-box">
             <input type="text" readonly class="timer" id="timer" :value="formatTime(timer)" />
-          </div>
+          </div> -->
         </div>
 
         <h1>{{ currentQuestion.mathQuestion }}</h1>

@@ -19,8 +19,8 @@ const closePopup = () => {
 <div v-if="visible" class="popup">
     <div class="overlay" @click="closePopup"></div>
     <div class="content">
-      <h3>Popup Content</h3>
-      {{hint}}
+      <h3>Have a hint!</h3>
+      <p>{{hint}}</p>
       <button @click="closePopup">Close</button>
     </div>
   </div>
@@ -52,9 +52,21 @@ const closePopup = () => {
     color: black;
   position: relative;
   background-color: #fff;
-  padding: 20px;
+  padding: 50px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 1001;
   max-width: 400px;
-}</style>
+}
+  .content button {
+    background-color: black;
+    font-size: 0.8rem;
+    font-weight: normal;
+  }
+
+  p{
+    font-size: 1.5rem;
+    border-style: dotted;
+    padding: 1rem;
+  }
+</style>
