@@ -37,8 +37,12 @@ const currentQuestion = computed(() => {
     const q = questions.value[currentQuestionIndex.value]
     return {
       ...q,
+      id: q.mathId,
+      question: q.mathQuestion,
       options: [q.mathOption1, q.mathOption2, q.mathOption3, q.mathOption4],
+      answer: q.mathAnswer,
       hint: q.mathHints
+
     }
   }
   return null
@@ -48,7 +52,7 @@ const score = ref(0)
 
 const setAnswer = (evt, option) => {
   timerRef.value.pause()
-  if (option === currentQuestion.value.mathAnswer) {
+  if (option === currentQuestion.value.answer) {
     questions.value[currentQuestionIndex.value].isCorrect = true
     score.value++
   } else {
@@ -99,7 +103,7 @@ const handleHintPopupVisibility = (visible) => {
           <TimerComponent :onTimeout="nextQuestion" ref="timerRef" />
         </div>
 
-        <h1>{{ currentQuestion.mathQuestion }}</h1>
+        <h1>{{ currentQuestion.question}}</h1>
       </div>
 
       <div class="option-box" v-if="currentQuestion">
@@ -108,7 +112,7 @@ const handleHintPopupVisibility = (visible) => {
           :key="index"
           :class="`option ${
             currentQuestion.selected === option
-              ? option == currentQuestion.mathAnswer
+              ? option == currentQuestion.answer
                 ? 'correct'
                 : 'wrong'
               : ''
@@ -119,7 +123,7 @@ const handleHintPopupVisibility = (visible) => {
         >
           <input
             type="radio"
-            :name="currentQuestion.mathId"
+            :name="currentQuestion.id"
             :value="option"
             :checked="currentQuestion.selected === option"
             :disabled="currentQuestion.selected"
