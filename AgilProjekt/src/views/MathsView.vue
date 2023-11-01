@@ -1,9 +1,9 @@
 <script setup>
-import MathsQuiz from '../components/MathsQuiz.vue'
+import QuizComponent from '../components/QuizComponent.vue'
 </script>
 
 <template>
   <main>
-    <MathsQuiz category="mathematics" />
+    <QuizComponent category="mathematics" />
   </main>
 </template>

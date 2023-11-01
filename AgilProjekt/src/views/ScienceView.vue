@@ -4,6 +4,6 @@ import QuizComponent from '../components/QuizComponent.vue'
 
 <template>
   <main>
-    <QuizComponent category="history" />
+    <QuizComponent category="science" />
   </main>
 </template>
