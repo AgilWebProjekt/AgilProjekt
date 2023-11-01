@@ -1,23 +1,66 @@
+<script setup>
+import { ref } from 'vue';
+
+const thankYouVisible = ref(false);
+const firstName = ref('');
+const lastName = ref('');
+const message = ref('');
+
+const submitForm = () => {
+  if (isValid()) {
+    thankYouVisible.value = true;
+    firstName.value = '';
+    lastName.value = '';
+    message.value = '';
+  }
+};
+
+const isValid = () => {
+  const nameRegex = /^[A-Za-z]+$/;
+
+  if (!nameRegex.test(firstName.value) || !nameRegex.test(lastName.value)) {
+    alert('Please enter valid first and last names (only letters).');
+    return false;
+  }
+
+  if (message.value.length < 25) {
+    alert('Please enter a message with at least 25 characters.');
+    return false;
+  }
+
+  return true;
+};
+</script>
 
 <template>
   <div>
-    <form id="contactForm">
+    <form id="contactForm" @submit.prevent="submitForm" novalidate>
       <h1>Contact Us</h1>
       <label for="fname">First Name</label>
-      <input type="text" id="fname" name="firstname" placeholder="Your name..">
+      <input v-model="firstName" type="text" id="fname" name="firstname" placeholder="Your name.." pattern="[A-Za-z]+" required>
 
       <label for="lname">Last Name</label>
-      <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+      <input v-model="lastName" type="text" id="lname" name="lastname" placeholder="Your last name.." pattern="[A-Za-z]+" required>
 
-      <label for="massage">Message</label>
-      <textarea id="massage" name="massage" rows="9"></textarea>
+      <label for="message">Message</label>
+      <textarea v-model="message" id="message" name="message" rows="9" minlength="25" required></textarea>
   
       <input type="submit" id="submitBtn" value="Submit">
     </form>
+
+    <p class="thanks" v-if="thankYouVisible">Thank you for your message!</p>
   </div>
 </template>
 
+
+
 <style>
+.thanks{
+   padding: 25px 50px;
+    color: white;
+    font-size: 1.3em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 input[type=text], textarea {
   width: 100%;
   padding: 12px 20px;
