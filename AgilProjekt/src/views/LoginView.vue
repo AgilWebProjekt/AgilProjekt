@@ -1,21 +1,20 @@
 <script setup>
-
+import LoginForm from '../components/LoginForm.vue';
 
 </script>
 
-
 <template>
-    <div class="login">
-      <h1>This is the login page</h1>
-    </div>
+  <LoginForm />
 </template>
+
+<style ></style>
   
 <style>
-  @media (min-width: 1024px) {
-    .login {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-    }
+@media (min-width: 1024px) {
+  .login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
   }
+}
 </style>
