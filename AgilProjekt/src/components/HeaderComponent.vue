@@ -47,9 +47,9 @@ header {
   font-size: 1.5rem;
 }
 
-nav {
-  display: flex;
-  align-items: center;
+img {
+  width: 80px;
+  height: 80px;
 }
 
 a,
@@ -62,11 +62,6 @@ a,
 .category-dropdown {
   position: relative;
   display: grid;
-}
-
-img {
-  width: 80px;
-  height: 80px;
 }
 
 .dropdown-content {
