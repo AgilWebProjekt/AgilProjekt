@@ -1,4 +1,25 @@
 <script setup>
+import { ref } from 'vue';
+import html2canvas from 'html2canvas';
+
+const scoreboard = ref(null);
+
+const takeScreenshot = async () => {
+  if (scoreboard.value) {
+    const canvas = await html2canvas(scoreboard.value);
+    const image = canvas.toDataURL('image/png');
+    downloadImage(image, 'scoreboard.png');
+  }
+};
+
+const downloadImage = (blob, filename) => {
+  const link = document.createElement('a');
+  link.href = blob;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
 const props = defineProps({
   score: {
@@ -17,11 +38,14 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="score" v-if="quizCompleted">
-      <h2>You have finished the quiz!</h2>
+    <div ref="scoreboard" class="scoreboard" v-if="quizCompleted">
+    <div class="score" >
+      <h2>You rocked at Quiztastic!</h2>
       <p>
         You scored <span>{{ props.score }} / {{ totalQuestions }}</span> questions correct
       </p>
+      <button @click="takeScreenshot">Save the scoreboard</button>
+    </div>
     </div>
   </template>
  
