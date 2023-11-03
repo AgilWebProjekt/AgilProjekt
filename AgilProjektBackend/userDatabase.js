@@ -11,7 +11,8 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
     db.run(
       `CREATE TABLE users (
             id INTEGER PRIMARY KEY,
-
+            firstname TEXT,
+            lastname TEXT,
             username TEXT,
             password TEXT,
             jwt TEXT            
