@@ -20,15 +20,13 @@
     <p>🚀 Welcome to the Ultimate Quiz Showdown! 🌟</p>
     <p>
       Are you ready to put your knowledge to the test and embark on a thrilling trivia adventure?
-      Whether you're a lone genius or a dynamic duo, our quiz game is your ticket to hours of
+      Whether you're a genius or a quiz enthusiast, our quiz game is your ticket to hours of
       brain-teasing, laughter-inducing fun!
     </p>
     <p>
       🎮 How to Play:<br />
-      1️⃣ Solo Mode: Challenge yourself and become the trivia master as you tackle a wide range of
-      mind-boggling questions. Will you claim the title of the Ultimate Quiz Champ?<br />
-      2️⃣ Duel Mode: Grab a friend, family member, or even a friendly rival for an epic head-to-head
-      battle of wits! Test your skills, bragging rights are on the line!<br />
+      🔐 Create account or Login: Create an account and login to play our quiz and save your score to you profile!<br />
+      👤 Play as guest: Or play as guest if you want to keep your high scores to yourself!!<br />
       🌍 Explore Diverse Topics: From history's mysteries to mathematics, science to language, and
       everything in between, our quizzes cover it all. Choose the topic and buckle up!
     </p>
@@ -40,7 +38,7 @@
 
   <div class="button">
     <RouterLink to="/quiz" custom v-slot="{ navigate }">
-      <button @click="navigate" role="link">LET'S GO</button>
+      <button @click="navigate" role="link">Play as guest</button>
     </RouterLink>
   </div>
 </template>
