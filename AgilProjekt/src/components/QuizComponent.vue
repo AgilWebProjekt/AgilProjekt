@@ -36,7 +36,6 @@ const fetchQuestions = async () => {
   } catch (error) {
     console.error('Error fetching ${category.value} questions:', error)
   }
-  
 }
 
 const currentQuestion = computed(() => {
@@ -55,8 +54,7 @@ const currentQuestion = computed(() => {
       ],
       answer: q[`${prefix}Answer`],
       hint: q[`${prefix}Hints`]
-    };
-    
+    }
   }
   return null
 })
@@ -100,7 +98,7 @@ const handleHintPopupVisibility = (visible) => {
 
 <template>
   <main class="quiz">
-    <h1 class="heading">{{category}}</h1>
+    <h1 class="heading">{{ category }}</h1>
     <div class="quiz-box" v-if="currentQuestionIndex < questions.length && !quizCompleted">
       <div class="question-box">
         <div class="hint-and-timer">
@@ -110,13 +108,13 @@ const handleHintPopupVisibility = (visible) => {
           <HintPopupComponent
             :visible="hintPopupTrigger"
             :hint="currentQuestion.hint"
-            category=props.category
+            category="props.category"
             @update:visible="handleHintPopupVisibility($event)"
           />
           <TimerComponent :onTimeout="nextQuestion" ref="timerRef" />
         </div>
 
-        <h1>{{ currentQuestion.question}}</h1>
+        <h1>{{ currentQuestion.question }}</h1>
       </div>
 
       <div class="option-box" v-if="currentQuestion">
@@ -171,6 +169,7 @@ const handleHintPopupVisibility = (visible) => {
   color: white;
   margin-bottom: 3rem;
   font-size: 2.5rem;
+  min-height: 100vh;
 }
 
 .quiz-box {
