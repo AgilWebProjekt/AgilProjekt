@@ -1,5 +1,6 @@
 <script setup>
 import CountdownComponent from './CountdownComponent.vue'
+import ScoreComponent from './ScoreComponent.vue'
 import TimerComponent from './TimerComponent.vue'
 import HintPopupComponent from './HintPopupComponent.vue'
 import { ref, onMounted, computed } from 'vue'
@@ -158,12 +159,7 @@ const onCountdownCompleted = () => {
 
       <button @click="nextQuestion">Next</button>
     </div>
-    <div class="score" v-else-if="quizCompleted">
-      <h2>You have finished the quiz!</h2>
-      <p>
-        You scored <span>{{ score }} / {{ questions.length }}</span> questions correct
-      </p>
-    </div>
+    <ScoreComponent :score="score" :totalQuestions="questions.length" :quizCompleted="quizCompleted" />
   </main>
 </template>
 
