@@ -2,9 +2,9 @@
     <footer class="page-footer">
         <p>
             &copy;
-            <a class = "github" href="https://github.com/AgilWebProjekt" target="_blank">Quiztastic</a>
-            built by Team Remote |
-            <a class = "contact" href="/contact" target="_self">Contact Us</a>
+            <a href="https://github.com/AgilWebProjekt" target="_blank">Quiztastic</a>
+            built by Team Remote <span>|</span>
+            <a href="/contact" target="_self">Contact Us</a>
         </p>
     </footer>
 </template>
@@ -22,28 +22,21 @@
     justify-content: center;
     margin-top: 2rem;
 }
-.contact:hover {
+a:hover {
     color: black; 
 }
 
-.github:hover {
-    color: black; 
-}
-.contact{
+a{
     color: white;
     transition: color 0.3s;
-    margin: 0;
-
+    margin-right: 0.2rem;
 }
 
-.github {
+a::visited {
     color: white;
-    transition: color 0.3s;
-    margin: 0 1rem;
-    
 }
 
-.page-footer a::visited {
-    color: aliceblue;
+span{
+    margin: 1rem;
 }
 </style>
