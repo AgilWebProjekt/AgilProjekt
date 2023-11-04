@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted} from 'vue';
+import { ref, onMounted, nextTick} from 'vue';
 //import { useRouter } from 'vue-router';
 
 const emit = defineEmits([
@@ -14,27 +14,28 @@ const countdown = ref(3);
 const displayMessage = ref(''); // This will be used to display the "Start!" message.
 
 const startCountdown = () => {
-  const interval = setInterval(() => {
-    if (countdown.value > 0) {
-      countdown.value--;
-    } else if (countdown.value === 0) {
-      displayMessage.value = 'Start!'; // Update the message
-      countdown.value--; // Decrease countdown below zero to stop rendering the numbers
+    const interval = setInterval(() => {
+      if (countdown.value > 0) {
+        countdown.value--;
+      } else if (countdown.value === 0) {
+        displayMessage.value = 'Start!';
+        countdown.value--;
 
-      // Stop the interval
-      clearInterval(interval);
+        clearInterval(interval);
+        setTimeout(() => {
+          emit('countdownCompleted');
+        }, 2000);
+      }
+    }, 2000); // Match the interval with the CSS animation duration
+  };
 
-      // Emit the countdownCompleted event after a brief delay to ensure "Start!" is visible
-      setTimeout(() => {
-        emit('countdownCompleted');
-      }, 3000); // Make sure this delay is long enough for the "Start!" message to be seen
-    }
-  }, 1500);
-};
+
 
 
 onMounted(() => {
+ 
   startCountdown();
+
 });
 
 //onUnmounted(() => {
@@ -74,14 +75,15 @@ onMounted(() => {
 
 .zoom-enter-active, .zoom-leave-active {
   position: absolute;
+  animation-duration: 1s;
 }
 
 .zoom-enter-active {
-  animation: zoomIn 2s ease-out forwards;
+  animation: zoomIn 1s ease-out forwards;
 }
 
 .zoom-leave-active {
-  animation: zoomOut 2s ease-in forwards;
+  animation: zoomOut 1s ease-in forwards;
 }
 
 .countdown-number, .countdown-message {
