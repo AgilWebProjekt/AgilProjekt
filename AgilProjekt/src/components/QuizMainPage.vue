@@ -1,21 +1,31 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
-<div class="banner">
-    <div class="images-top">
-        <RouterLink to="/categories/history"><img title="History" src="..\assets\history.png" alt="history" /></RouterLink>
-        <RouterLink to="/categories/science"><img title="Science" src="..\assets\science.png" alt="Science" /></RouterLink>
-        <RouterLink to="/categories/language"><img title="Language" src="..\assets\language.png" alt="Language" /></RouterLink>
+  <div class="banner">
+    <div class="images">
+      <RouterLink to="/categories/history"
+        ><img title="History" src="..\assets\history.png" alt="history"
+      /></RouterLink>
+      <RouterLink to="/categories/science"
+        ><img title="Science" src="..\assets\science.png" alt="Science"
+      /></RouterLink>
+      <RouterLink to="/categories/language"
+        ><img title="Language" src="..\assets\language.png" alt="Language"
+      /></RouterLink>
     </div>
 
     <p>Click on one of the icons to pick a category to play!</p>
 
-    <div class="images-bottom">
-        <RouterLink to="/categories/mathematics"><img title="Mathematics" src="..\assets\maths.png" alt="mathematics" /></RouterLink>
-        <RouterLink to="/categories/geography"><img title="Geography" src="..\assets\geography.png" alt="Geography" /></RouterLink>
-        <RouterLink to="/categories/sweden"><img title="Sweden" src="..\assets\sweden.png" alt="Sweden" /></RouterLink>
+    <div class="images">
+      <RouterLink to="/categories/mathematics"
+        ><img title="Mathematics" src="..\assets\maths.png" alt="mathematics"
+      /></RouterLink>
+      <RouterLink to="/categories/geography"
+        ><img title="Geography" src="..\assets\geography.png" alt="Geography"
+      /></RouterLink>
+      <RouterLink to="/categories/sweden"
+        ><img title="Sweden" src="..\assets\sweden.png" alt="Sweden"
+      /></RouterLink>
     </div>
   </div>
 </template>
@@ -31,6 +41,11 @@ p {
   font-size: 2rem;
   margin: 30px 0;
   color: white;
+}
+
+.images {
+  display: flex;
+  justify-content: space-evenly;
 }
 img {
   width: 120px;
@@ -58,52 +73,6 @@ img:hover {
   }
   100% {
     transform: translate(0, 0) rotate(0deg);
-  }
-}
-
-.images-top {
-  margin: 0 100px;
-  animation-duration: 3s;
-  animation-delay: 2s;
-  animation-name: slideintop;
-  animation-timing-function: ease-out;
-  display: flex;
-  justify-content: space-around;
-  animation-fill-mode: forwards;
-}
-
-@keyframes slideintop {
-  from {
-    margin-left: 100%;
-    width: 200%;
-  }
-
-  to {
-    margin-left: 5%;
-    width: 90%;
-  }
-}
-
-.images-bottom {
-  margin: 0 100px;
-  animation-duration: 3s;
-  animation-delay: 2s;
-  animation-name: slideinbottom;
-  animation-timing-function: ease-out;
-  display: flex;
-  justify-content: space-around;
-  animation-fill-mode: forwards;
-}
-
-@keyframes slideinbottom {
-  from {
-    margin-left: -100%;
-    width: 100%;
-  }
-
-  to {
-    margin-left: 5%;
-    width: 90%;
   }
 }
 </style>
