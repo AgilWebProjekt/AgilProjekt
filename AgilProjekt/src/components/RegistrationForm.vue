@@ -1,45 +1,50 @@
 <template>
-    <div>
-        <input v-model="username" placeholder="Username" />
-        <input v-model="password" type="password" placeholder="Password" />
-        <button @click="registerUser">Register</button>
+    <div class="registration-container">
+        <h1>Register</h1>
+        <form @submit.prevent="register">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" v-model="username" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" v-model="password" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
     </div>
 </template>
   
 <script>
+import axios from 'axios';
+
 export default {
     data() {
         return {
-            username: "",
-            password: "",
+            username: '',
+            password: ''
         };
     },
     methods: {
-        async registerUser() {
+        async register() {
             try {
-                // Perform client-side password hashing (you should use a secure method)
-                const hashedPassword = await this.hashPassword(this.password);
-
-                // Send a POST request to the registration endpoint
-                const response = await this.$axios.post('/api/register', {
+                const response = await axios.post('http://localhost:3000/api/register', {
                     username: this.username,
-                    password: hashedPassword,
+                    password: this.password
                 });
-
-                // Handle the response (e.g., show a success message or redirect the user)
-                console.log("Registration successful:", response.data.message);
+                console.log(response.data);
+                alert('Registration successful!');
+                // Redirect to login or dashboard page
             } catch (error) {
-                // Handle registration failure (e.g., show an error message)
-                console.error("Registration failed:", error);
+                console.error(error.response.data);
+                alert('Registration failed!');
             }
-        },
-        async hashPassword(password) {
-            // Use a secure method to hash the password (bcrypt is recommended)
-            // You may need to import the bcrypt library
-            return await bcrypt.hash(password, 10);
-        },
-    },
-};
+        }
+    }
+}
 </script>
-  </template>
+  
+<style scoped>
+/* Add styles here */
+</style>
   

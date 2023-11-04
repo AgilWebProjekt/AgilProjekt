@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import store from '../stores/store';
+import RegistrationForm from '../components/RegistrationForm.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -20,6 +21,10 @@ const router = createRouter({
                 store.dispatch('logout');
                 return '/login'; // Redirect to the login page after logout
             },
+        },
+        {
+            path: '/register',
+            component: RegistrationForm,
         },
     ],
 });

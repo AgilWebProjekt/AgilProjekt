@@ -1,50 +1,50 @@
 <template>
-  <div>
-    <input v-model="username" type="text" placeholder="Username">
-    <input v-model="password" type="password" placeholder="Password">
-    <button @click="login">Login</button>
+  <div class="login-container">
+    <h1>Login</h1>
+    <form @submit.prevent="login">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" v-model="username" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" v-model="password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <router-link to="/register">Register</router-link> <!-- Added Register button -->
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
       username: '',
-      password: '',
-      error: null, // To store login error messages
+      password: ''
     };
   },
   methods: {
     async login() {
       try {
-        // Make an API request to handle login (replace with actual API endpoint)
-        const response = await fetch('http://localhost:3000/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ username: this.username, password: this.password }),
+        const response = await axios.post('http://localhost:3000/api/login', {
+          username: this.username,
+          password: this.password
         });
-
-        if (response.ok) {
-          // Assuming the API returns a JSON object with user data
-          const userData = await response.json();
-          console.log(userData);
-          this.$store.dispatch('login', userData); // Dispatch login action
-
-          // Redirect to a protected route or show a "Login successful" message
-          this.$router.push('/dashboard'); // Adjust the route accordingly
-        } else {
-          // Handle login failure, e.g., incorrect credentials
-          this.error = 'Invalid username or password';
-        }
+        console.log(response.data);
+        alert('Login successful!');
+        // Redirect to dashboard page or wherever needed
       } catch (error) {
-        // Handle network errors or other unexpected errors
-        console.error(error);
-        this.error = 'An error occurred while logging in.';
+        console.error(error.response.data);
+        alert('Login failed!');
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
+
+<style scoped>
+/* Add styles here */
+</style>
