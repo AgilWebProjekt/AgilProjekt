@@ -1,71 +1,53 @@
 <script setup>
-import { ref, onMounted, nextTick} from 'vue';
-//import { useRouter } from 'vue-router';
+import { ref, onMounted } from 'vue'
 
-const emit = defineEmits([
-  'countdownCompleted'
-])
+const emit = defineEmits(['countdownCompleted'])
 
-const countdown = ref(3);
+const countdown = ref(3)
 
-//const countdownZoomed = ref(false);
-//const router = useRouter();
-
-const displayMessage = ref(''); // This will be used to display the "Start!" message.
+const displayMessage = ref('')
 
 const startCountdown = () => {
-    const interval = setInterval(() => {
-      if (countdown.value > 0) {
-        countdown.value--;
-      } else if (countdown.value === 0) {
-        displayMessage.value = 'Start!';
-        countdown.value--;
+  countdown.value = 3
+  setTimeout(() => {
+    countdown.value--
+  }, 0)
+  const interval = setInterval(() => {
+    if (countdown.value > 0) {
+      countdown.value--
+    } else if (countdown.value === 0) {
+      displayMessage.value = 'Start!'
+      countdown.value--
 
-        clearInterval(interval);
-        setTimeout(() => {
-          emit('countdownCompleted');
-        }, 2000);
-      }
-    }, 2000); // Match the interval with the CSS animation duration
-  };
-
-
-
+      clearInterval(interval)
+      setTimeout(() => {
+        emit('countdownCompleted')
+      }, 2000)
+    }
+  }, 2000)
+}
 
 onMounted(() => {
- 
-  startCountdown();
-
-});
-
-//onUnmounted(() => {
-  //router.back();
-  //emit('countdown', false)
-//});
+  startCountdown()
+})
 </script>
 
 <template>
   <div class="countdown-container">
-    <transition
-      name="zoom"
-      mode="out-in"
-      @before-enter="beforeEnter"
-      @enter="enter"
-      @leave="leave"
-    >
-      <div v-if="countdown >= 0" class="countdown-number" :key="countdown">
+    <transition name="zoom" mode="out-in" @before-enter="beforeEnter" @enter="enter" @leave="leave">
+      <div v-if="countdown >= 0" class="countdown-number zoom-enter-active" :key="countdown">
         {{ countdown }}
       </div>
-      
+
       <div v-else class="countdown-message" :key="displayMessage">
         {{ displayMessage }}
       </div>
     </transition>
   </div>
 </template>
-   
-  <style scoped>
-  .countdown-container {
+
+<style scoped>
+.countdown-container {
   color: white;
   display: flex;
   justify-content: center;
@@ -73,7 +55,8 @@ onMounted(() => {
   height: 100vh;
 }
 
-.zoom-enter-active, .zoom-leave-active {
+.zoom-enter-active,
+.zoom-leave-active {
   position: absolute;
   animation-duration: 1s;
 }
@@ -86,9 +69,11 @@ onMounted(() => {
   animation: zoomOut 1s ease-in forwards;
 }
 
-.countdown-number, .countdown-message {
+.countdown-number,
+.countdown-message {
   font-size: 48px;
-  opacity: 0;
+  opacity: 1;
+  transform: scale(1);
   transition: opacity 0.5s ease-in-out;
 }
 
@@ -97,12 +82,11 @@ onMounted(() => {
     transform: scale(0);
     opacity: 0;
   }
-  
+
   50% {
-   
     opacity: 1;
   }
-  
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -119,5 +103,4 @@ onMounted(() => {
     opacity: 0;
   }
 }
-  </style>
-  
+</style>
