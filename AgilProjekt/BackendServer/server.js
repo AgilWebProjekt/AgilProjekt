@@ -16,7 +16,7 @@ const port = 3000
 app.use(express.json())
 app.use(cors())
 app.use(bodyParser.json())
-app.use(cors({ origin: 'http://localhost:5173' })); // Allow frontend to access
+app.use(cors({ origin: 'http://localhost:5173' }));
 
 
 app.get('/api/mathematics', (req, res) => {
@@ -92,8 +92,6 @@ app.get('/api/sweden', (req, res) => {
 })
 
 
-//Create users if it does not exist
-//db_login.run('CREATE TABLE IF NOT EXISTS USERS (id INTEGER PRIMARY KEY, username TEXT NOT NULL, password TEXT NOT NULL)');
 db_login.run('CREATE TABLE users(id INTEGER PRIMARY KEY, username TEXT, password TEXT)');
 
 // Registration endpoint
