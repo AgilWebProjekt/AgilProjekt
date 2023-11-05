@@ -1,21 +1,3 @@
-<template>
-  <div class="login-container">
-    <h1>Log in</h1>
-    <form @submit.prevent="login">
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" v-model="username" required>
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" v-model="password" required>
-      </div>
-      <button type="submit">Log in</button>
-    </form>
-    <router-link to="/register">Register</router-link> <!-- Added Register button -->
-  </div>
-</template>
-
 <script setup>
 import axios from 'axios';
 import { ref } from 'vue';
@@ -43,3 +25,64 @@ const login = async () => {
   }
 }
 </script>
+
+<template>
+  <div class="login-container">
+    <h1>Log in</h1>
+    <form @submit.prevent="login">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" v-model="username" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" v-model="password" required>
+      </div>
+      <button type="submit">Log in</button>
+    </form>
+  </div>
+</template>
+
+<style scoped>
+.login-container{
+  display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f2f2;
+    margin: 3rem 23rem;
+    border-radius: 1rem;
+    color: black;
+}
+
+h1{
+    margin: 3rem 1rem 0 1rem;
+}
+
+#username{
+    margin: 1rem;
+    font-size: 1.2rem;
+}
+
+#password{
+    margin: 1rem; 
+    font-size: 1.2rem;
+}
+
+input{
+    padding: 0.5rem;
+}
+
+button{
+    background-color: #005b41;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 30px;
+  border-radius: 20px;
+}
+</style>
