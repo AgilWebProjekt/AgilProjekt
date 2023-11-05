@@ -34,7 +34,6 @@ export default {
                 });
                 console.log(response.data);
                 alert('Registration successful!');
-                // Redirect to login or dashboard page
             } catch (error) {
                 console.error(error.response.data);
                 alert('Registration failed!');

@@ -7,19 +7,18 @@ const router = createRouter({
     routes: [
         {
             path: '/dashboard',
-            component: Dashboard, // Your protected component
+            component: Dashboard,
             meta: { requiresAuth: true },
         },
         {
             path: '/login',
-            component: Login, // Your login component
+            component: Login,
         },
         {
             path: '/logout',
             beforeEnter: (to, from) => {
-                // Handle the logout logic (e.g., calling a logout action)
                 store.dispatch('logout');
-                return '/login'; // Redirect to the login page after logout
+                return '/login';
             },
         },
         {
@@ -32,12 +31,12 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     if (to.matched.some((record) => record.meta.requiresAuth)) {
         if (!store.getters.isAuthenticated) {
-            next({ path: '/login' }); // Redirect to login page if not authenticated
+            next({ path: '/login' });
         } else {
-            next(); // Continue to the protected route
+            next();
         }
     } else {
-        next(); // Continue to other routes
+        next();
     }
 });
 

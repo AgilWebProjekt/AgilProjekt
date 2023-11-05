@@ -16,8 +16,7 @@ export default {
     },
     methods: {
         logout() {
-            this.$store.dispatch('logout'); // Dispatch logout action
-            // Redirect to the login page or homepage
+            this.$store.dispatch('logout');
         },
     },
 };

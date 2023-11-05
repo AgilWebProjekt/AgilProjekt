@@ -12,7 +12,7 @@
       </div>
       <button type="submit">Log in</button>
     </form>
-    <router-link to="/register">Register</router-link> <!-- Added Register button -->
+    <router-link to="/register">Register</router-link>
   </div>
 </template>
 
@@ -35,7 +35,6 @@ export default {
         });
         console.log(response.data);
         alert('Login successful!');
-        // Redirect to dashboard page or wherever needed
       } catch (error) {
         console.error(error.response.data);
         alert('Login failed!');
