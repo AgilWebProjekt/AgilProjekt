@@ -14,9 +14,8 @@ import BannerComponent from './BannerComponent.vue'
       </p>
       <p>
         🎮 How to Play:<br />
-        🔐 Create account or Login: Create an account and login to play our quiz and save your score
-        to you profile!<br />
-        👤 Play as guest: Or play as guest if you want to keep your high scores to yourself!!<br />
+        🔐 Create account or Login: Create an account and login to play our quiz!<br />
+        👤 Play as guest: Or play as guest if you want to keep it casual 😉!<br />
         🌍 Explore Diverse Topics: From history's mysteries to mathematics, science to language, and
         everything in between, our quizzes cover it all. Choose the topic and buckle up!
       </p>
