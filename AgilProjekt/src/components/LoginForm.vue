@@ -16,31 +16,30 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import axios from 'axios';
+import { ref } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 
-export default {
-  data() {
-    return {
-      username: '',
-      password: ''
-    };
-  },
-  methods: {
-    async login() {
-      try {
-        const response = await axios.post('http://localhost:3000/api/login', {
-          username: this.username,
-          password: this.password
-        });
-        console.log(response.data);
-        alert('Login successful!');
-        // Redirect to dashboard page or wherever needed
-      } catch (error) {
-        console.error(error.response.data);
-        alert('Login failed!');
-      }
-    }
+const store = useStore(); 
+const router = useRouter();
+const username = ref('');
+const password = ref('');
+
+const login = async () => {
+  try {
+    const response = await axios.post('http://localhost:3000/api/login', {
+      username: username.value,
+      password: password.value
+    });
+    console.log(response.data);
+    alert('Login successful!');
+    store.dispatch('login', response.data.user);
+    router.push('/');
+   } catch (error) {
+    console.error(error.response.data);
+    alert('Login failed!');
   }
 }
 </script>

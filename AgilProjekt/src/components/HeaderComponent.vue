@@ -1,7 +1,16 @@
 <script setup>
+import { useStore } from 'vuex'
 import { RouterLink } from 'vue-router'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 const showDropdown = ref(false)
+
+const store = useStore()
+
+const isAuthenticated = computed(() => store.getters.isAuthenticated)
+
+const logout = () => {
+  store.dispatch('logout')
+}
 
 const toggleDropdown = () => {
   showDropdown.value = !showDropdown.value
@@ -19,7 +28,8 @@ window.addEventListener('click', (event) => {
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/about">About Us</RouterLink>
     <img alt="game logo" class="logo" src="@/assets/Quiztastic.png" />
-    <RouterLink to="/login">Login</RouterLink>
+    <RouterLink v-if="isAuthenticated" to="/" @click="logout">Logout</RouterLink>
+    <RouterLink v-else to="/login">Login</RouterLink>
 
     <div class="category-dropdown" @click="toggleDropdown">
       <span class="category-link">Categories</span>
