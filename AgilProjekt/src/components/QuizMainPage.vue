@@ -33,6 +33,7 @@
 <style scoped>
 .banner {
   margin-top: 40px;
+  min-height: 100vh;
 }
 p {
   display: flex;
