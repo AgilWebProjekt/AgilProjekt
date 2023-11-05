@@ -1,12 +1,12 @@
 <template>
-  <footer class="page-footer">
-    <p>
-      &copy;
-      <a class="github" href="https://github.com/AgilWebProjekt" target="_blank">Quiztastic</a>
-      built by Team Remote |
-      <a class="contact" href="/contact" target="_self">Contact Us</a>
-    </p>
-  </footer>
+    <footer class="page-footer">
+        <p>
+            &copy;
+            <a href="https://github.com/AgilWebProjekt" target="_blank">Quiztastic</a>
+            built by Team Remote <span>|</span>
+            <a href="/contact" target="_self">Contact Us</a>
+        </p>
+    </footer>
 </template>
 
 <script setup></script>
@@ -22,26 +22,21 @@
   margin-top: auto;
 }
 
-.contact:hover {
-  color: black;
+a:hover {
+    color: black; 
 }
 
-.github:hover {
-  color: black;
-}
-.contact {
-  color: white;
-  transition: color 0.3s;
-  margin: 0;
+a{
+    color: white;
+    transition: color 0.3s;
+    margin-right: 0.2rem;
 }
 
-.github {
-  color: white;
-  transition: color 0.3s;
-  margin: 0 1rem;
+a::visited {
+    color: white;
 }
 
-.page-footer a::visited {
-  color: aliceblue;
+span{
+    margin: 1rem;
 }
 </style>

@@ -1,9 +1,12 @@
 <script setup>
+import CountdownComponent from './CountdownComponent.vue'
+import ScoreComponent from './ScoreComponent.vue'
 import TimerComponent from './TimerComponent.vue'
 import HintPopupComponent from './HintPopupComponent.vue'
 import { ref, onMounted, computed } from 'vue'
 
 import axios from 'axios'
+
 
 const props = defineProps({
   category: {
@@ -94,11 +97,19 @@ const handleHintPopupVisibility = (visible) => {
     timerRef.value.resume()
   }
 }
+
+const countdown = ref(true)
+
+const onCountdownCompleted = () => {
+  countdown.value = false; }
 </script>
 
 <template>
-  <main class="quiz">
-    <h1 class="heading">{{ category }}</h1>
+<div class="countdown-screen" v-if="countdown">
+  <CountdownComponent @countdownCompleted="onCountdownCompleted" />
+  </div>
+  <main v-else class="quiz">
+    <h1 class="heading">{{category}}</h1>
     <div class="quiz-box" v-if="currentQuestionIndex < questions.length && !quizCompleted">
       <div class="question-box">
         <div class="hint-and-timer">
@@ -146,12 +157,7 @@ const handleHintPopupVisibility = (visible) => {
 
       <button @click="nextQuestion">Next</button>
     </div>
-    <div class="score" v-else-if="quizCompleted">
-      <h2>You have finished the quiz!</h2>
-      <p>
-        You scored <span>{{ score }} / {{ questions.length }}</span> questions correct
-      </p>
-    </div>
+    <ScoreComponent :score="score" :totalQuestions="questions.length" :quizCompleted="quizCompleted" />
   </main>
 </template>
 
