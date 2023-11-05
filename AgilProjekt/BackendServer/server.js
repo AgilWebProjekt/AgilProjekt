@@ -95,12 +95,13 @@ app.get('/api/sweden', (req, res) => {
 //Create users if it does not exist
 //db_login.run('CREATE TABLE IF NOT EXISTS USERS (id INTEGER PRIMARY KEY, username TEXT NOT NULL, password TEXT NOT NULL)');
 db_login.run('CREATE TABLE users(id INTEGER PRIMARY KEY, username TEXT, password TEXT)');
-//User registration route
+
+// Registration endpoint
 app.post('/api/register', async (req, res) => {
   const { username, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  db.run('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], function (err) {
+  db_login.run('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], function (err) {
     if (err) {
       res.status(500).send('Error registering new user');
     } else {
@@ -109,13 +110,11 @@ app.post('/api/register', async (req, res) => {
   });
 });
 
-
-//User login route
 // Login endpoint
-app.post('/api/login', async (req, res) => {
+app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
 
-  db.get('SELECT * FROM users WHERE username = ?', [username], async (err, user) => {
+  db_login.get('SELECT * FROM users WHERE username = ?', [username], async (err, user) => {
     if (user && await bcrypt.compare(password, user.password)) {
       res.status(200).send({ message: 'Login successful' });
     } else {
