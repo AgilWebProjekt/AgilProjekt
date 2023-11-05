@@ -21,6 +21,10 @@ window.addEventListener('click', (event) => {
     showDropdown.value = false
   }
 })
+
+const getCategoryLink = (category) => {
+  return isAuthenticated.value ? `/categories/${category}` : '/createAccountOrLogin';
+};
 </script>
 
 <template>
@@ -35,13 +39,13 @@ window.addEventListener('click', (event) => {
       <span class="category-link">Categories</span>
 
       <div v-if="showDropdown" class="dropdown-content">
-        <RouterLink to="/categories/history">History</RouterLink>
-        <RouterLink to="/categories/mathematics">Mathematics</RouterLink>
-        <RouterLink to="/categories/science">Science</RouterLink>
-        <RouterLink to="/categories/geography">Geography</RouterLink>
-        <RouterLink to="/categories/language">Language</RouterLink>
-        <RouterLink to="/categories/sweden">Sweden</RouterLink>
-      </div>
+      <RouterLink :to="getCategoryLink('history')">History</RouterLink>
+      <RouterLink :to="getCategoryLink('mathematics')">Mathematics</RouterLink>
+      <RouterLink :to="getCategoryLink('science')">Science</RouterLink>
+      <RouterLink :to="getCategoryLink('geography')">Geography</RouterLink>
+      <RouterLink :to="getCategoryLink('language')">Language</RouterLink>
+      <RouterLink :to="getCategoryLink('sweden')">Sweden</RouterLink>
+    </div>
     </div>
   </header>
 </template>
