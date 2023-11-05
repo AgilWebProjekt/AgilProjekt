@@ -162,6 +162,7 @@ const handleHintPopupVisibility = (visible) => {
   align-items: center;
   padding: 2rem;
   margin-top: 2rem;
+  min-height: 100vh;
 }
 
 .heading {
@@ -169,7 +170,6 @@ const handleHintPopupVisibility = (visible) => {
   color: white;
   margin-bottom: 3rem;
   font-size: 2.5rem;
-  min-height: 100vh;
 }
 
 .quiz-box {
