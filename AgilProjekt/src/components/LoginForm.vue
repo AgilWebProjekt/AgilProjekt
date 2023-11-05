@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <h1>Login</h1>
+    <h1>Log in</h1>
     <form @submit.prevent="login">
       <div>
         <label for="username">Username:</label>
@@ -10,7 +10,7 @@
         <label for="password">Password:</label>
         <input type="password" id="password" v-model="password" required>
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">Log in</button>
     </form>
     <router-link to="/register">Register</router-link> <!-- Added Register button -->
   </div>
@@ -44,7 +44,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-/* Add styles here */
-</style>
