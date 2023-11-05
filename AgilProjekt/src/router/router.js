@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+/* import { createRouter, createWebHistory } from 'vue-router';
 import store from '../stores/store';
 import RegistrationForm from '../components/RegistrationForm.vue';
 
@@ -41,3 +41,4 @@ router.beforeEach((to, from, next) => {
 });
 
 export default router;
+ */
