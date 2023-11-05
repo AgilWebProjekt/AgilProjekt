@@ -8,20 +8,20 @@
         </p>
     </footer>
 </template>
-  
-<script setup>
-</script>
-  
+
+<script setup></script>
+
 <style scoped>
 .page-footer {
-    height: 4rem;
-    background-color: #005b41a7;
-    color: aliceblue;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2rem;
+  height: 4rem;
+  background-color: #005b41a7;
+  color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
 }
+
 a:hover {
     color: black; 
 }

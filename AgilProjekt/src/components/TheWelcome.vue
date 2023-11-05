@@ -3,36 +3,42 @@ import BannerComponent from './BannerComponent.vue'
 </script>
 
 <template>
-  <BannerComponent />
-  <div class="info">
-    <p>🚀 Welcome to the Ultimate Quiz Showdown! 🌟</p>
-    <p>
-      Are you ready to put your knowledge to the test and embark on a thrilling trivia adventure?
-      Whether you're a genius or a quiz enthusiast, our quiz game is your ticket to hours of
-      brain-teasing, laughter-inducing fun!
-    </p>
-    <p>
-      🎮 How to Play:<br />
-      🔐 Create account or Login: Create an account and login to play our quiz and save your score
-      to you profile!<br />
-      👤 Play as guest: Or play as guest if you want to keep your high scores to yourself!!<br />
-      🌍 Explore Diverse Topics: From history's mysteries to mathematics, science to language, and
-      everything in between, our quizzes cover it all. Choose the topic and buckle up!
-    </p>
-    <p>
-      Get ready to flex those brain muscles, have a blast, make lasting memories and become a
-      legend! It's time to start quizzing! 🤓✨"
-    </p>
-  </div>
+  <div class="welcome">
+    <BannerComponent />
+    <div class="info">
+      <p>🚀 Welcome to the Ultimate Quiz Showdown! 🌟</p>
+      <p>
+        Are you ready to put your knowledge to the test and embark on a thrilling trivia adventure?
+        Whether you're a genius or a quiz enthusiast, our quiz game is your ticket to hours of
+        brain-teasing, laughter-inducing fun!
+      </p>
+      <p>
+        🎮 How to Play:<br />
+        🔐 Create account or Login: Create an account and login to play our quiz and save your score
+        to you profile!<br />
+        👤 Play as guest: Or play as guest if you want to keep your high scores to yourself!!<br />
+        🌍 Explore Diverse Topics: From history's mysteries to mathematics, science to language, and
+        everything in between, our quizzes cover it all. Choose the topic and buckle up!
+      </p>
+      <p>
+        Get ready to flex those brain muscles, have a blast, make lasting memories and become a
+        legend! It's time to start quizzing! 🤓✨"
+      </p>
+    </div>
 
-  <div class="button">
-    <RouterLink to="/quiz" custom v-slot="{ navigate }">
-      <button @click="navigate" role="link">Play as guest</button>
-    </RouterLink>
+    <div class="button">
+      <RouterLink to="/quiz" custom v-slot="{ navigate }">
+        <button @click="navigate" role="link">Play as guest</button>
+      </RouterLink>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.welcome {
+  min-height: 100vh;
+}
+
 p {
   margin: 10px 80px;
 }

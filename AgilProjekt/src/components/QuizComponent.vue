@@ -39,7 +39,6 @@ const fetchQuestions = async () => {
   } catch (error) {
     console.error('Error fetching ${category.value} questions:', error)
   }
-  
 }
 
 const currentQuestion = computed(() => {
@@ -58,8 +57,7 @@ const currentQuestion = computed(() => {
       ],
       answer: q[`${prefix}Answer`],
       hint: q[`${prefix}Hints`]
-    };
-    
+    }
   }
   return null
 })
@@ -121,13 +119,13 @@ const onCountdownCompleted = () => {
           <HintPopupComponent
             :visible="hintPopupTrigger"
             :hint="currentQuestion.hint"
-            category=props.category
+            category="props.category"
             @update:visible="handleHintPopupVisibility($event)"
           />
           <TimerComponent :onTimeout="nextQuestion" ref="timerRef" />
         </div>
 
-        <h1>{{ currentQuestion.question}}</h1>
+        <h1>{{ currentQuestion.question }}</h1>
       </div>
 
       <div class="option-box" v-if="currentQuestion">
@@ -170,6 +168,7 @@ const onCountdownCompleted = () => {
   align-items: center;
   padding: 2rem;
   margin-top: 2rem;
+  min-height: 100vh;
 }
 
 .heading {

@@ -1,41 +1,22 @@
-# AgilProjekt
+<p align="center">
+<img src="src/assets/Quiztastic.png" alt="QuiztasticLogo" width=150px/>
+</p>
 
-This template should help get you started developing with Vue 3 in Vite.
+# Quiztastic
 
-## Recommended IDE Setup
+Are you ready to put your knowledge to the test and embark on a thrilling trivia adventure?
+      Whether you're a genius or a quiz enthusiast, our quiz game is your ticket to hours of
+      brain-teasing, laughter-inducing fun! Choose from 6 categories and start quizzing!
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Start our Program
 
-## Customize configuration
+Run the following commands in two different terminals:
+> ```powershell
+> cd AgilProjekt
+> npm install
+> npm run dev
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+> ```powershell
+> cd AgilProjekt/BackendServer
+> node server.js
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
