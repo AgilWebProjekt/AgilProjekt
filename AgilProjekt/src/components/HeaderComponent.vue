@@ -29,7 +29,7 @@ window.addEventListener('click', (event) => {
     <RouterLink to="/about">About Us</RouterLink>
     <img alt="game logo" class="logo" src="@/assets/Quiztastic.png" />
     <RouterLink v-if="isAuthenticated" to="/" @click="logout">Logout</RouterLink>
-    <RouterLink v-else to="/login">Login</RouterLink>
+    <RouterLink v-else to="/createAccountOrLogin">Login</RouterLink>
 
     <div class="category-dropdown" @click="toggleDropdown">
       <span class="category-link">Categories</span>
