@@ -104,4 +104,13 @@ img:hover {
     width: 90%;
   }
 }
+@media (max-width: 768px) {
+  .images-bottom{
+    display: grid;
+  }
+  
+  .images-top {
+    display: grid;
+  }
+}
 </style>
