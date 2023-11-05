@@ -7,13 +7,13 @@
 </template>
 
 <style scoped>
-@media (min-width: 1024px) {
-  .login {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+.login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 h1 {
   color: white;
 }
