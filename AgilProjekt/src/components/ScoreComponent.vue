@@ -74,4 +74,10 @@ h2{
   padding: 2px 5px;
   color: black;
 }
+@media (max-width: 768px) {
+  h2{
+    margin :25px 31px;
+
+  }
+}
 </style>

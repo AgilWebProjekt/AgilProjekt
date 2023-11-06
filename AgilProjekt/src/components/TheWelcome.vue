@@ -60,4 +60,18 @@ button {
   margin: 30px;
   border-radius: 20px;
 }
+@media (max-width: 768px) {
+div .info{
+   padding: 25px 15px;
+   margin:0;
+   font-size: 1em;
+  }
+  p{
+    margin: 0;
+  }
+  button {
+    padding: 9px 17px ;
+    font-weight :100;
+  }
+}
 </style>

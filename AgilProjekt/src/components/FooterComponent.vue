@@ -39,4 +39,9 @@ a::visited {
 span{
     margin: 1rem;
 }
+@media (max-width: 768px) {
+    p {
+font-size: 0.7rem;
+    }
+}
 </style>

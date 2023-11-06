@@ -104,4 +104,14 @@ img:hover {
     width: 90%;
   }
 }
+@media (max-width: 768px) {
+  img{
+    width: 75px;
+    padding : 0px;
+  }
+  h1{
+    font-size: 1.5em;
+  }  
+  
+}
 </style>

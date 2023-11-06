@@ -76,4 +76,15 @@ img:hover {
     transform: translate(0, 0) rotate(0deg);
   }
 }
+@media (max-width: 768px) {
+  img{
+    width: 75px;
+    padding : 0px;
+  }
+  p{
+    font-size: 1.4em;
+    margin: 15px 15px;
+  }  
+  
+}
 </style>
