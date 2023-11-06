@@ -248,18 +248,17 @@ a:hover::after,
     }
 
     .navbar .menu-items {
-        padding-top: 100px;
-        height: 100vh;
+        padding-top: 4em;
+        height: 40vh;
         max-width: 300px;
         transform: translate(-150%);
-        display: flex;
+        display: grid;
         flex-direction: column;
         margin-left: -40px;
         padding-left: 40px;
         transition: transform 0.5s ease-in-out;
         background: #005b41;
-        
-    
+        padding-bottom: 17em;
     }
 
     .navbar .menu-items li {

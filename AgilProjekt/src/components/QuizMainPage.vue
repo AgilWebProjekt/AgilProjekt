@@ -83,7 +83,7 @@ img:hover {
   }
   p{
     font-size: 1.4em;
-    margin: 15px 15px;
+    margin: 1em;
   }  
   
 }
