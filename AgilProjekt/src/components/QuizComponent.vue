@@ -22,7 +22,7 @@ const timerRef = ref(null)
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
-    ;[array[i], array[j]] = [array[j], array[i]]
+      ;[array[i], array[j]] = [array[j], array[i]]
   }
 }
 
@@ -101,27 +101,24 @@ const handleHintPopupVisibility = (visible) => {
 const countdown = ref(true)
 
 const onCountdownCompleted = () => {
-  countdown.value = false; }
+  countdown.value = false;
+}
 </script>
 
 <template>
-<div class="countdown-screen" v-if="countdown">
-  <CountdownComponent @countdownCompleted="onCountdownCompleted" />
+  <div class="countdown-screen" v-if="countdown">
+    <CountdownComponent @countdownCompleted="onCountdownCompleted" />
   </div>
   <main v-else class="quiz">
-    <h1 class="heading">{{category}}</h1>
+    <h1 class="heading">{{ category }}</h1>
     <div class="quiz-box" v-if="currentQuestionIndex < questions.length && !quizCompleted">
       <div class="question-box">
         <div class="hint-and-timer">
           <button class="hint-button" @click="handleHintPopupVisibility(true)">
             <img class="hint-img" src="..\assets\551080.png" />
           </button>
-          <HintPopupComponent
-            :visible="hintPopupTrigger"
-            :hint="currentQuestion.hint"
-            category="props.category"
-            @update:visible="handleHintPopupVisibility($event)"
-          />
+          <HintPopupComponent :visible="hintPopupTrigger" :hint="currentQuestion.hint" category="props.category"
+            @update:visible="handleHintPopupVisibility($event)" />
           <TimerComponent :onTimeout="nextQuestion" ref="timerRef" />
         </div>
 
@@ -129,28 +126,16 @@ const onCountdownCompleted = () => {
       </div>
 
       <div class="option-box" v-if="currentQuestion">
-        <label
-          v-for="(option, index) in currentQuestion.options"
-          :key="index"
-          :class="`option ${
-            currentQuestion.selected === option
-              ? option == currentQuestion.answer
-                ? 'correct'
-                : 'wrong'
-              : ''
+        <label v-for="(option, index) in currentQuestion.options" :key="index" :class="`option ${currentQuestion.selected === option
+          ? option == currentQuestion.answer
+            ? 'correct'
+            : 'wrong'
+          : ''
           } 
-                  ${
-                    currentQuestion.selected && option != currentQuestion.selected ? 'disabled' : ''
-                  }`"
-        >
-          <input
-            type="radio"
-            :name="currentQuestion.id"
-            :value="option"
-            :checked="currentQuestion.selected === option"
-            :disabled="currentQuestion.selected"
-            @change="(evt) => setAnswer(evt, option)"
-          />
+                                          ${currentQuestion.selected && option != currentQuestion.selected ? 'disabled' : ''
+          }`">
+          <input type="radio" :name="currentQuestion.id" :value="option" :checked="currentQuestion.selected === option"
+            :disabled="currentQuestion.selected" @change="(evt) => setAnswer(evt, option)" />
           <div>{{ option }}</div>
         </label>
       </div>
@@ -206,6 +191,7 @@ const onCountdownCompleted = () => {
   width: 2.5rem;
   background-color: #008170;
 }
+
 .hint-img {
   width: 2.5rem;
 }
@@ -293,4 +279,69 @@ label.option.disabled {
   opacity: 0.5;
   pointer-events: none;
 }
+
+@media (max-width: 600px) {
+  .quiz-box {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .option {
+    font-size: 1rem;
+  }
+
+  .hint-img,
+  .hint-button {
+    width: 2rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+}
+
+
+@media (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
+  .quiz-box {
+    width: 80%;
+    max-width: none;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .option {
+    font-size: 1.2rem;
+  }
+
+  .hint-img,
+  .hint-button {
+    width: 2.5rem;
+  }
+
+  button {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) and (orientation: landscape) {
+  .quiz-box {
+    width: 50%;
+    max-width: none;
+  }
+}
+
+@media (min-width: 1025px) {
+  .quiz-box {
+    max-width: 600px;
+  }
+}
 </style>
+
+
