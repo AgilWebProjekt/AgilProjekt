@@ -3,14 +3,23 @@ import { RouterLink } from 'vue-router';
 </script>
 
 <template>
+  <div class="container">
   <div class="button">
   <button><RouterLink to="/register">Create Account</RouterLink></button>
   <h1>OR</h1>
   <button><RouterLink to="/login">Login</RouterLink></button>
   </div>
+  </div>
 </template>
   
 <style scoped>
+.container{
+  min-height: 100vh;
+}
+
+h1{
+  color: white;
+}
 .button {
   display: flex;
   justify-content: space-evenly;

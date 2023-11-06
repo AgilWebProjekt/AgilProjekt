@@ -1,4 +1,5 @@
 <template>
+    <div class="container">
     <div class="registration-container">
         <h1>Register</h1>
         <form @submit.prevent="register">
@@ -12,6 +13,7 @@
             </div>
             <button type="submit">Register</button>
         </form>
+    </div>
     </div>
 </template>
   
@@ -44,6 +46,10 @@ export default {
 </script>
 
 <style scoped>
+.container{
+    min-height: 100vh;
+}
+
 .registration-container {
     display: flex;
     justify-content: space-around;
@@ -53,6 +59,7 @@ export default {
     margin: 3rem 23rem;
     border-radius: 1rem;
     color: black;
+
 }
 
 h1{

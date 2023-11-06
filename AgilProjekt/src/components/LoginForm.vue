@@ -27,6 +27,7 @@ const login = async () => {
 </script>
 
 <template>
+  <div class="container">
   <div class="login-container">
     <h1>Log in</h1>
     <form @submit.prevent="login">
@@ -41,9 +42,13 @@ const login = async () => {
       <button type="submit">Log in</button>
     </form>
   </div>
+  </div>
 </template>
 
 <style scoped>
+.container{
+  min-height: 100vh;
+}
 .login-container{
   display: flex;
     justify-content: space-around;
