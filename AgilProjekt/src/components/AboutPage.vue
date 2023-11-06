@@ -50,6 +50,7 @@
   align-items: flex-start;
   margin: 0 2em;
 }
+
 h1 {
   color: #0f9d58;
   font-size: 5em;
@@ -90,5 +91,61 @@ p {
 
 .team li {
   margin: 0;
+}
+
+
+@media (max-width: 768px) {
+  .top {
+    flex-direction: column;
+    margin: 0;
+    padding: 1rem;
+  }
+
+  .top-left,
+  .top-right {
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+    align-items: center;
+  }
+
+  .top-right img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .top {
+    flex-direction: column;
+  }
+
+  .top-left,
+  .top-right {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .top-right img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .top {
+    flex-direction: row;
+  }
+
+  .top-left,
+  .top-right {
+    width: 50%;
+    padding: 0 2rem;
+  }
+
+  .top-right img {
+    max-width: 80%;
+    height: auto;
+  }
 }
 </style>
