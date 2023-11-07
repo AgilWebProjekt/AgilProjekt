@@ -18,5 +18,6 @@ Run the following commands in two different terminals:
 
 > ```powershell
 > cd AgilProjekt/BackendServer
+> npm install cors
 > node server.js
 
